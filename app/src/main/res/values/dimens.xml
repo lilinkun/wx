@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="base_height">90dp</dimen>
+    <dimen name="img_size">40dp</dimen>
+    <dimen name="base_margin">40dp</dimen>
+    <dimen name="fun_size">220dp</dimen>
+    <dimen name="fun_iv_top">15dp</dimen>
+    <dimen name="fun_login_txt_size">20sp</dimen>
+    <dimen name="login_top_height">60dp</dimen>
+    <dimen name="login_margin">156dp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+</resources>

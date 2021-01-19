@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/btn_login_fun_tangshi"
+            android:background="@drawable/bg_bllue_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fun_size">
+            <ImageView
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/fun_login_txt_size"
+                android:textColor="@android:color/white"
+                android:text="堂食"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_toRightOf="@id/btn_login_fun_tangshi"
+            android:orientation="vertical"
+            android:id="@+id/btn_login_fun_waisong"
+            android:background="@drawable/bg_bllue_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fun_size">
+            <ImageView
+                android:layout_marginTop="@dimen/fun_iv_top"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/fun_login_txt_size"
+                android:textColor="@android:color/white"
+                android:text="外送"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/btn_login_fun_dengqu"
+            android:background="@drawable/bg_bllue_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fun_size">
+            <ImageView
+                android:layout_marginTop="@dimen/fun_iv_top"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/fun_login_txt_size"
+                android:textColor="@android:color/white"
+                android:text="等取"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_login_fun_dengqu"
+            android:orientation="vertical"
+            android:id="@+id/btn_login_fun_laiqu"
+            android:background="@drawable/bg_bllue_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fun_size">
+            <ImageView
+                android:layout_marginTop="@dimen/fun_iv_top"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/fun_login_txt_size"
+                android:textColor="@android:color/white"
+                android:text="来取"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_vertical"
+
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:id="@+id/btn_login_fun_zhaodan"
+            android:background="@drawable/bg_bllue_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fun_size">
+            <ImageView
+                android:layout_marginTop="@dimen/fun_iv_top"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/fun_login_txt_size"
+                android:textColor="@android:color/white"
+                android:text="找单"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_login_fun_zhaodan"
+            android:orientation="vertical"
+            android:id="@+id/btn_login_fun_qianxiang"
+            android:background="@drawable/bg_bllue_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fun_size">
+            <ImageView
+                android:layout_marginTop="@dimen/fun_iv_top"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/fun_login_txt_size"
+                android:textColor="@android:color/white"
+                android:text="钱箱"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

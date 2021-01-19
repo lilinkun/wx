@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:drawableLeft="@mipmap/all_home1"
+            android:layout_weight="1"
+            style="@style/txt_hollow"
+            android:text="@string/str_home"/>
+
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:drawableLeft="@mipmap/all_change_order"
+            android:layout_weight="1"
+            style="@style/txt_hollow"
+            android:text="@string/home_change_order"/>
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:drawableLeft="@mipmap/all_till"
+
+            android:layout_weight="1"
+            style="@style/txt_hollow"
+            android:text="@string/home_till"/>
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:drawableLeft="@mipmap/all_more"
+
+            android:layout_weight="1"
+            style="@style/txt_hollow"
+            android:text="@string/str_more"/>
+        <Spinner
+            android:id="@+id/sp_dining_hall"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bg_gray_rectangle"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="0.8"
+            android:layout_width="match_parent"
+            android:layout_height="46dp">
+
+        </Spinner>
+        <com.android.wx.weight.DrawableCenterTextView
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/all_halleat"
+
+            style="@style/txt_hollow"
+            android:text="@string/home_halleat"/>
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/all_wait"
+
+            style="@style/txt_hollow"
+            android:text="@string/home_wait"/>
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:layout_weight="1"
+            style="@style/txt_hollow"
+            android:drawableLeft="@mipmap/all_get"
+
+            android:text="@string/home_get"/>
+
+        <com.android.wx.weight.DrawableCenterTextView
+            android:drawableLeft="@mipmap/all_take_out"
+
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            style="@style/txt_hollow"
+            android:text="@string/home_take_out"/>
+    </LinearLayout>
+
+</LinearLayout>

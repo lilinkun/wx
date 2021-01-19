@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+    <include layout="@layout/layout_login_top" />
+
+    <LinearLayout
+        android:padding="15dp"
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_weight="1.6"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/layout_home_left"></include>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/btn_home_halleat"
+                    android:layout_weight="1"
+                    android:background="@mipmap/home_halleat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="22sp"
+                        android:layout_marginTop="220dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/home_halleat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/home_take_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="22sp"
+                        android:layout_marginTop="220dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/home_take_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/home_wait"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="22sp"
+                        android:layout_marginTop="220dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/home_wait"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:background="@mipmap/home_change_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="22sp"
+                        android:layout_marginTop="220dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/home_change_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/home_get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="22sp"
+                        android:layout_marginTop="220dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/home_get"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/home_till"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="22sp"
+                        android:layout_marginTop="220dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/home_till"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
