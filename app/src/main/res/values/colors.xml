@@ -11,4 +11,8 @@
 
     <color name="text_bottom_666">#666666</color>
 
+    <color name="text_menu_order">#ff424230</color>
+
+    <color name="text_yellow">#FFB700</color>
+
 </resources>

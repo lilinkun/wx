@@ -18,10 +18,17 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
 
     private ArrayList<Table> tableDaos;
     private Context context;
+    //type 0:全部展示 1:价格 2：时长 3：单号 4：时间 5：人数 6：状态 7：前台  8：顾客姓名
+    private int type = 1;
 
     public HomeDataAdapter(ArrayList<Table> tableDaos, Context context){
         this.tableDaos = tableDaos;
         this.context = context;
+    }
+
+    public void setType(int type){
+        this.type = type;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -42,15 +49,47 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
         holder.mPrice2.setText(tableDaos.get(position).getAmount2()+"");
         holder.mPrice3.setText(tableDaos.get(position).getAmount3()+"");
         holder.mTableName.setText(tableDaos.get(position).getName());
-        holder.mTablenNumber.setText(tableDaos.get(position).getNumber());
-        holder.mTableStatus.setText(tableDaos.get(position).getStatue()+"");
+        holder.mTablenNumber.setText(tableDaos.get(position).getOrderNumber());
         holder.mTablePerNo.setText(tableDaos.get(position).getPersionNo()+"");
+
+        if (type == 1){
+            holder.mTableStatus.setText(tableDaos.get(position).getTotalAmountPrice()+"");
+        }else if (type == 2){
+            holder.mTableStatus.setText(tableDaos.get(position).getTimeOld()+"");
+        }else if (type == 3){
+            holder.mTableStatus.setText(tableDaos.get(position).getOrderNumber()+"");
+        }else if (type == 4){
+            holder.mTableStatus.setText(tableDaos.get(position).getTimeOld()+"");
+        }else if (type == 5){
+            holder.mTableStatus.setText(tableDaos.get(position).getPersionNo()+"");
+        }else if (type == 6){
+            holder.mTableStatus.setText(tableDaos.get(position).getStatue()+"");
+        }else if (type == 7){
+            holder.mTableStatus.setText(tableDaos.get(position).getStatue()+"");
+        }else if (type == 8){
+            holder.mTableStatus.setText(tableDaos.get(position).getCustomerName()+"");
+        }else if (type == 9){
+            holder.mTablePerNo.setVisibility(View.INVISIBLE);
+            holder.mPrice1.setText("****");
+            holder.mPrice2.setText("****");
+            holder.mPrice3.setText("****");
+        }else if (type == 10){
+            holder.mTablePerNo.setVisibility(View.VISIBLE);
+            holder.mPrice1.setText(tableDaos.get(position).getAmount1()+"");
+            holder.mPrice2.setText(tableDaos.get(position).getAmount2()+"");
+            holder.mPrice3.setText(tableDaos.get(position).getAmount3()+"");
+        }
 
     }
 
     @Override
     public int getItemCount() {
         return tableDaos.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

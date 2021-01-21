@@ -14,13 +14,16 @@ public class MenuInfo {
     private String menuName;//菜单名
     private String menuIcon;//菜品图片
     private String menuPrice;//菜品价格
+    private String menuId;//菜品编号
 
-    @Generated(hash = 1848973251)
-    public MenuInfo(String menuType, String menuName, String menuIcon, String menuPrice) {
+    @Generated(hash = 1199045594)
+    public MenuInfo(String menuType, String menuName, String menuIcon, String menuPrice,
+            String menuId) {
         this.menuType = menuType;
         this.menuName = menuName;
         this.menuIcon = menuIcon;
         this.menuPrice = menuPrice;
+        this.menuId = menuId;
     }
 
     @Generated(hash = 859137273)
@@ -57,5 +60,13 @@ public class MenuInfo {
 
     public void setMenuPrice(String menuPrice) {
         this.menuPrice = menuPrice;
+    }
+
+    public String getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(String menuId) {
+        this.menuId = menuId;
     }
 }

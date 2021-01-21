@@ -9,6 +9,8 @@ import com.android.wx.model.MenuInfo;
 import com.android.wx.model.MenuInfoDao;
 import com.android.wx.model.MenuTypeBean;
 import com.android.wx.model.MenuTypeBeanDao;
+import com.android.wx.model.Table;
+import com.android.wx.model.TableDao;
 import com.android.wx.model.UserInfo;
 import com.android.wx.model.UserInfoDao;
 
@@ -125,5 +127,27 @@ public class DBManager {
         return list;
     }
 
+    /**
+     * 插入餐桌信息
+     * @param table
+     */
+    public void insertTable(Table table) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        TableDao tableDao = daoSession.getTableDao();
+        tableDao.insert(table);
+    }
+
+    /**
+     * 查询餐桌信息
+     */
+    public List<Table> queryTable() {
+        DaoMaster daoMaster = new DaoMaster(getReadableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        TableDao tableDao = daoSession.getTableDao();
+        QueryBuilder<Table> qb = tableDao.queryBuilder();
+        List<Table> list = qb.list();
+        return list;
+    }
 
 }

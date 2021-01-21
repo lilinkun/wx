@@ -22,7 +22,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:text="西红柿好食大厅"
-                android:textColor="#ffffb600"
+                android:textColor="@color/text_yellow"
                 android:textSize="@dimen/text_size_24" />
 
             <TextView
@@ -33,7 +33,7 @@
                 android:layout_alignLeft="@id/item_table_name"
                 android:layout_marginTop="12dp"
                 android:text="(202号桌)"
-                android:textColor="#ffffb600"
+                android:textColor="@color/text_yellow"
                 android:textSize="20sp" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
                 android:text="12人"
-                android:textColor="#ffffb600"
+                android:textColor="@color/text_yellow"
                 android:textSize="20sp">
 
             </TextView>
@@ -72,10 +72,10 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/halleat_pay"
-                android:drawablePadding="10dp"
+                android:drawablePadding="8dp"
                 android:text="160"
-                android:textColor="#ffffb600"
-                android:textSize="20sp" />
+                android:textColor="@color/text_yellow"
+                android:textSize="16sp" />
 
             <com.android.wx.weight.DrawableCenterTextView
 
@@ -87,10 +87,10 @@
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/halleat_consumption"
-                android:drawablePadding="10dp"
+                android:drawablePadding="8dp"
                 android:text="160"
-                android:textColor="#ffffb600"
-                android:textSize="20sp" />
+                android:textColor="@color/text_yellow"
+                android:textSize="16sp" />
 
             <com.android.wx.weight.DrawableCenterTextView
 
@@ -102,10 +102,10 @@
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/halleat_add"
-                android:drawablePadding="10dp"
+                android:drawablePadding="8dp"
                 android:text="160"
-                android:textColor="#ffffb600"
-                android:textSize="20sp"/>
+                android:textColor="@color/text_yellow"
+                android:textSize="16sp"/>
 
         </RelativeLayout>
 

@@ -23,9 +23,13 @@
     <string name="home_number">人数</string>
     <string name="home_status">状态</string>
     <string name="home_order">启台</string>
-    <string name="home_name">顾客姓名</string>
+    <string name="home_customer_name">顾客姓名</string>
     <string name="str_home">首页</string>
     <string name="str_more">更多</string>
+
+
+    <string name="pre_order_report">报表</string>
+    <string name="pre_order_language">语言</string>
 
     <string name="tv_order">订单</string>
     <string name="tv_menu_type1">全部菜单</string>
@@ -40,4 +44,18 @@
     <string name="order_menu">菜单</string>
     <string name="search_menu">搜索菜单</string>
     <string name="self_menu">自定义菜</string>
+
+    <string name="preorder_divide_line">分割线</string>
+    <string name="preorder_plus">加1</string>
+    <string name="preorder_num">数量</string>
+    <string name="preorder_reduce">减1</string>
+    <string name="preorder_sauce">调味</string>
+    <string name="preorder_rechange_price">改价</string>
+
+    <array name="more_array">
+        <item>礼品卡</item>
+        <item>会员卡</item>
+        <item>报表</item>
+        <item>编辑桌子</item>
+    </array>
 </resources>

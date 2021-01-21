@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_login_top"/>
+    <include layout="@layout/layout_pre_order_top"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,11 +28,16 @@
                 android:layout_marginRight="1dp"
                 android:background="@color/white">
 
-            <RelativeLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="22dp"
+                    >
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="22dp"
-                android:background="#ffffff"
+                android:orientation="horizontal"
                 >
 
                 <LinearLayout
@@ -60,6 +65,10 @@
                     />
                 </LinearLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -106,15 +115,146 @@
 
                 </LinearLayout>
 
-            </RelativeLayout>
+                </RelativeLayout>
+
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="订单号: 9839283923"
+                                android:textColor="#ff4b4b41"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="启单: 劳先生"
+                                android:textColor="#ff4b4b41"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="类型: 新单 未保存"
+                                android:textColor="#ff4b4b41"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="桌号: 2人"
+                                android:textColor="#ff4b4b41"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+添加备注"
+                            android:textColor="#ff2d2d04"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_menu_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_above="@+id/ll_preorder_bottom"
                 />
 
+
+            <LinearLayout
+                android:id="@+id/ll_preorder_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:gravity="center">
+
+                <TextView
+                    android:text="@string/preorder_divide_line"
+                    style="@style/txt_menu_order"
+                    />
+
+                <TextView
+                    android:text="@string/preorder_plus"
+                    style="@style/txt_menu_order"
+                    />
+
+                <TextView
+                    android:text="@string/preorder_num"
+                    style="@style/txt_menu_order"
+                    />
+
+                <TextView
+                    android:text="@string/preorder_reduce"
+                    style="@style/txt_menu_order"
+                    />
+
+                <TextView
+                    android:text="@string/preorder_sauce"
+                    style="@style/txt_menu_order"
+                    />
+
+                <TextView
+                    android:text="@string/preorder_rechange_price"
+                    style="@style/txt_menu_order"
+                    />
+
+
+
+            </LinearLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -161,7 +301,8 @@
                         android:text="@string/self_menu"
                         android:textColor="#ff666666"
                         android:gravity="center"
-                        android:textSize="20sp"
+                        android:padding="@dimen/dp_10"
+                        android:textSize="18sp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
                         android:background="@drawable/menu_click_bg"
@@ -188,6 +329,16 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="80dp"
+                    android:orientation="vertical">
 
             <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/order_list_tablayou"
@@ -209,7 +360,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    android:layout_alignParentBottom="true"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:gravity="center">
+
+                </LinearLayout>
+
+            </RelativeLayout>
         </LinearLayout>
 
 

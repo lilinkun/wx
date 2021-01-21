@@ -33,8 +33,8 @@
             android:text="@string/home_till"/>
 
         <com.android.wx.weight.DrawableCenterTextView
+            android:id="@+id/tv_more"
             android:drawableLeft="@mipmap/all_more"
-
             android:layout_weight="1"
             style="@style/txt_hollow"
             android:text="@string/str_more"/>

@@ -47,8 +47,21 @@
         <item name="android:paddingTop">20dp</item>
         <item name="android:paddingBottom">20dp</item>
         <item name="android:textColor">@color/text_bottom_666</item>
-        <item name="android:background">@drawable/bg_home_text_bottom</item>
+        <item name="android:background">@drawable/bg_home_text_bottom_unselect</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="txt_menu_order">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_menu_order</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">@dimen/dp_10</item>
+        <item name="android:layout_marginRight">@dimen/dp_10</item>
+
+    </style>
+
 </resources>

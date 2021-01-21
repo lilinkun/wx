@@ -13,25 +13,32 @@ public class Table {
     @Id
     long id;
     String name;
-    String number;
-    String persionNo;
+    String orderNumber; //单号
+    String persionNo;   //人数
     double amount1;
     double amount2;
     double amount3;
-    int statue;
+    String statue;      //状态
     double totalAmountPrice;
+    String timeOld;     //时长
+    String customerName; //顾客名字
+    String floorName;    //楼层
 
-    @Generated(hash = 136024719)
-    public Table(long id, String name, String number, String persionNo, double amount1, double amount2, double amount3, int statue, double totalAmountPrice) {
+    @Generated(hash = 523367520)
+    public Table(long id, String name, String orderNumber, String persionNo, double amount1, double amount2, double amount3, String statue, double totalAmountPrice, String timeOld,
+            String customerName, String floorName) {
         this.id = id;
         this.name = name;
-        this.number = number;
+        this.orderNumber = orderNumber;
         this.persionNo = persionNo;
         this.amount1 = amount1;
         this.amount2 = amount2;
         this.amount3 = amount3;
         this.statue = statue;
         this.totalAmountPrice = totalAmountPrice;
+        this.timeOld = timeOld;
+        this.customerName = customerName;
+        this.floorName = floorName;
     }
 
     @Generated(hash = 752389689)
@@ -50,11 +57,11 @@ public class Table {
     public void setName(String name) {
         this.name = name;
     }
-    public String getNumber() {
-        return this.number;
+    public String getOrderNumber() {
+        return this.orderNumber;
     }
-    public void setNumber(String number) {
-        this.number = number;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
     public String getPersionNo() {
         return this.persionNo;
@@ -80,10 +87,10 @@ public class Table {
     public void setAmount3(double amount3) {
         this.amount3 = amount3;
     }
-    public int getStatue() {
+    public String getStatue() {
         return this.statue;
     }
-    public void setStatue(int statue) {
+    public void setStatue(String statue) {
         this.statue = statue;
     }
 
@@ -93,5 +100,29 @@ public class Table {
 
     public void setTotalAmountPrice(double totalAmountPrice) {
         this.totalAmountPrice = totalAmountPrice;
+    }
+
+    public String getTimeOld() {
+        return timeOld;
+    }
+
+    public void setTimeOld(String timeOld) {
+        this.timeOld = timeOld;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getFloorName() {
+        return floorName;
+    }
+
+    public void setFloorName(String floorName) {
+        this.floorName = floorName;
     }
 }

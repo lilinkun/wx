@@ -22,6 +22,7 @@
     </LinearLayout>
 
     <Switch
+        android:id="@+id/sw_hall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
@@ -30,6 +31,7 @@
         android:track="@drawable/home_switch"
         android:textOn=""
         android:textOff=""
+        android:checked="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         />
