@@ -2,7 +2,7 @@ package com.android.wx.presenter;
 
 import com.android.wx.event.EventCenter;
 import com.android.wx.mvp.callback.presenter.impl.BasePresenter;
-import com.android.wx.view.IDiningHallView;
+import com.android.wx.contract.IDiningHallView;
 
 /**
  * Created by kai

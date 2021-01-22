@@ -6,15 +6,18 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.wx.R;
 import com.android.wx.base.activity.MvpActivity;
 import com.android.wx.event.EventCenter;
 import com.android.wx.presenter.UserInfoPresenter;
-import com.android.wx.view.UserInfoView;
+import com.android.wx.contract.UserInfoView;
 import com.android.wx.weight.CustomNumKeyView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -34,6 +37,12 @@ public class LoginActivity extends MvpActivity<UserInfoView, UserInfoPresenter> 
     ImageView ivConfirm;
     @BindView(R.id.btn_login_delect)
     ImageView ivDelect;
+    @BindView(R.id.tv_login_time)
+    TextView tvLoginTime;
+    @BindView(R.id.tv_login_date)
+    TextView tvLoginDate;
+
+
     List<String> his = new ArrayList<>();
 
     @Override
@@ -57,6 +66,14 @@ public class LoginActivity extends MvpActivity<UserInfoView, UserInfoPresenter> 
         presenter.install(this);
         edPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
         edPwd.setInputType(InputType.TYPE_NULL);
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd yyyy");
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+
+        tvLoginDate.setText(simpleDateFormat.format(date));
+        tvLoginTime.setText(simpleDateFormat1.format(date));
+
     }
 
     @NonNull

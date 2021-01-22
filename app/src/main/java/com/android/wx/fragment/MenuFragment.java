@@ -33,7 +33,7 @@ public class MenuFragment extends BaseFragment implements PreOrderMenuAdapter.On
         menuInfos = new ArrayList<>();
 
         for (int i = 0; i<20;i++) {
-            MenuInfo menuInfo = new MenuInfo("促销活动","至尊蔬菜沙拉","asdadsa","$5000.00","123456");
+            MenuInfo menuInfo = new MenuInfo("促销活动","至尊蔬菜沙拉"+i,"asdadsa",5000.00,"123456",false,null,1);
             menuInfos.add(menuInfo);
         }
 
@@ -56,6 +56,17 @@ public class MenuFragment extends BaseFragment implements PreOrderMenuAdapter.On
 
     @Override
     public void onItemOrderClick(int positon) {
+        menuInfos.get(positon).setChoose(!menuInfos.get(positon).isChoose());
+        preOrderMenuAdapter.notifyDataSetChanged();
         iPreOrderListener.onPreOrderClick(menuInfos.get(positon));
+    }
+
+    public void onRemoveFood(MenuInfo menuInfo){
+        for (int i = 0;i<menuInfos.size();i++){
+            if (menuInfos.get(i) == menuInfo){
+                menuInfos.get(i).setChoose(false);
+                preOrderMenuAdapter.notifyDataSetChanged();
+            }
+        }
     }
 }

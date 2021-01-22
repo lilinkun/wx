@@ -84,6 +84,7 @@
                         android:textColor="#ff4b4b41"
                         android:textSize="16sp"
                         android:layout_marginLeft="15dp"
+                        android:drawableRight="@drawable/ic_sanjiao"
                         />
 
                     <TextView
@@ -92,6 +93,7 @@
                         android:text="@string/order_change_table"
                         android:textColor="#ff4b4b41"
                         android:textSize="16sp"
+                        android:drawableRight="@drawable/ic_sanjiao"
                         android:layout_marginLeft="15dp"
                         />
 
@@ -101,6 +103,7 @@
                         android:text="@string/order_personer_num"
                         android:textColor="#ff4b4b41"
                         android:textSize="16sp"
+                        android:drawableRight="@drawable/ic_sanjiao"
                         android:layout_marginLeft="15dp"
                         />
 
@@ -110,6 +113,7 @@
                         android:text="@string/order_pre_type"
                         android:textColor="#ff4b4b41"
                         android:textSize="16sp"
+                        android:drawableRight="@drawable/ic_sanjiao"
                         android:layout_marginLeft="15dp"
                         />
 
@@ -208,6 +212,16 @@
                 android:layout_above="@+id/ll_preorder_bottom"
                 />
 
+                <TextView
+                    android:id="@+id/tv_no_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/preorder_no_food"
+                    android:layout_centerInParent="true"
+                    android:textColor="#ff999999"
+                    android:textSize="24sp"
+                    />
+
 
             <LinearLayout
                 android:id="@+id/ll_preorder_bottom"
@@ -216,6 +230,7 @@
                 android:orientation="horizontal"
                 android:background="@color/white"
                 android:layout_alignParentBottom="true"
+                android:visibility="invisible"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:gravity="center">
@@ -226,16 +241,19 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_pre_order_plus"
                     android:text="@string/preorder_plus"
                     style="@style/txt_menu_order"
                     />
 
                 <TextView
+                    android:id="@+id/tv_pre_order_num"
                     android:text="@string/preorder_num"
                     style="@style/txt_menu_order"
                     />
 
                 <TextView
+                    android:id="@+id/tv_pre_order_reduce"
                     android:text="@string/preorder_reduce"
                     style="@style/txt_menu_order"
                     />
@@ -246,6 +264,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_pre_order_change_price"
                     android:text="@string/preorder_rechange_price"
                     style="@style/txt_menu_order"
                     />
@@ -253,6 +272,24 @@
 
 
             </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_change_start_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/menu_click_bg"
+                    android:textSize="18dp"
+                    android:text="@string/change_start_order"
+                    android:textColor="@color/text_bottom_666"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingBottom="@dimen/dp_10"
+                    />
+
 
             </RelativeLayout>
 
@@ -278,12 +315,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/order_menu"
-                    android:textColor="#ff666666"
+                    android:textColor="@color/text_bottom_666"
                     android:gravity="center"
-                    android:padding="@dimen/dp_10"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
                     android:textSize="18sp"
                     android:layout_marginLeft="15dp"
                     android:background="@drawable/menu_click_bg"
+                    android:drawableRight="@drawable/ic_sanjiao"
                     />
 
 
@@ -299,9 +338,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/self_menu"
-                        android:textColor="#ff666666"
+                        android:textColor="@color/text_bottom_666"
                         android:gravity="center"
-                        android:padding="@dimen/dp_10"
+                        android:paddingLeft="@dimen/dp_10"
+                        android:paddingRight="@dimen/dp_10"
                         android:textSize="18sp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
@@ -313,7 +353,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/search_menu"
-                    android:textColor="#ff666666"
+                    android:textColor="@color/text_bottom_666"
                     android:textSize="20sp"
                     android:layout_marginRight="15dp"
                     android:layout_centerVertical="true"
@@ -369,8 +409,179 @@
                     android:background="@color/white"
                     android:layout_alignParentBottom="true"
                     android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:gravity="center">
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_price"
+                                android:textColor="#DE0711"
+                                android:textSize="20sp"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_preorder_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#DE0711"
+                                android:text="0.00"
+                                android:textSize="20sp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tax_price"
+                                android:textColor="#DE0711"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_tax_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#DE0711"
+                                android:text="0.00"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#DE0711"
+                                android:text=")"
+                                android:textSize="16sp"
+                                />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total"
+                                android:textColor="#4B4B41"
+                                android:textSize="20sp"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_preorder_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4B4B41"
+                                android:text="0"
+                                android:textSize="20sp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/piece_total"
+                                android:textColor="#4B4B41"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_goods_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4B4B41"
+                                android:text="0.00"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#4B4B41"
+                                android:text="@string/goods_tip"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center_vertical"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_preorder_exit"
+                                android:text="@string/preorder_exit"
+                                style="@style/tv_preorder_total"
+                                android:background="@drawable/menu_click_bg"
+                                android:textColor="@color/text_bottom_666"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_preorder_delete"
+                                android:text="@string/preorder_delete"
+                                style="@style/tv_preorder_total"
+                                android:background="@drawable/menu_click_bg"
+                                android:textColor="@color/text_bottom_666"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_preorder_save"
+                                android:text="@string/preorder_save"
+                                style="@style/tv_preorder_total"
+                                android:background="@drawable/menu_click_bg"
+                                android:textColor="@color/text_bottom_666"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_preorder_pay"
+                                android:text="@string/preorder_pay"
+                                style="@style/tv_preorder_total"
+                                android:background="@drawable/bg_click_red"
+                                android:textColor="@color/white"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_preorder_go_kitchen"
+                                android:text="@string/preorder_go_kitchen"
+                                style="@style/tv_preorder_total"
+                                android:background="@drawable/bg_click_black"
+                                android:textColor="#FFB600"
+                                />
+
+
+
+
+                        </LinearLayout>
+
+
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 

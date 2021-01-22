@@ -52,6 +52,35 @@
     <string name="preorder_sauce">调味</string>
     <string name="preorder_rechange_price">改价</string>
 
+    <string name="preorder_no_food">您未选择菜品</string>
+    <string name="choose_customer_num">选择用餐人数</string>
+    <string name="self_food_num">自定义人数</string>
+    <string name="start_preorder">开始点餐</string>
+    <string name="change_start_order">修改启台</string>
+    
+    <string name="add_remarks">添加备注</string>
+    <string name="please_input_remarks_info">请输入备注信息</string>
+    <string name="please_input_remarks_money">请输入备注金额</string>
+
+    <string name="sure">确定</string>
+
+    <string name="no_choose_food_tip">请选择要改变的菜肴</string>
+    <string name="no_reduce_food">此菜肴您不能再减了</string>
+
+    <string name="delete_food_tip">请选择要删除的菜肴</string>
+
+    <string name="total_price">总计: $</string>
+    <string name="tax_price"> (税: $</string>
+    <string name="total">共</string>
+    <string name="piece_total">种 共</string>
+    <string name="goods_tip">个商品</string>
+
+    <string name="preorder_exit">退出</string>
+    <string name="preorder_delete">删除</string>
+    <string name="preorder_save">保存</string>
+    <string name="preorder_pay">付款</string>
+    <string name="preorder_go_kitchen">送厨</string>
+
     <array name="more_array">
         <item>礼品卡</item>
         <item>会员卡</item>

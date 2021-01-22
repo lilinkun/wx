@@ -2,8 +2,14 @@ package com.android.wx.model;
 
 import android.view.Menu;
 
+import com.android.wx.utils.StringConverter;
+
+import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * create data 2021/1/19
@@ -13,17 +19,24 @@ public class MenuInfo {
     private String menuType;//菜品类型
     private String menuName;//菜单名
     private String menuIcon;//菜品图片
-    private String menuPrice;//菜品价格
+    private double menuPrice;//菜品价格
     private String menuId;//菜品编号
+    private boolean isChoose;//点单时是否被选中
+    @Convert(columnType = String.class, converter = StringConverter.class)
+    private List<String> menuRemarks; //菜单备注
+    private int menuFoodNum; //菜品数量
 
-    @Generated(hash = 1199045594)
-    public MenuInfo(String menuType, String menuName, String menuIcon, String menuPrice,
-            String menuId) {
+    @Generated(hash = 1085574067)
+    public MenuInfo(String menuType, String menuName, String menuIcon, double menuPrice,
+            String menuId, boolean isChoose, List<String> menuRemarks, int menuFoodNum) {
         this.menuType = menuType;
         this.menuName = menuName;
         this.menuIcon = menuIcon;
         this.menuPrice = menuPrice;
         this.menuId = menuId;
+        this.isChoose = isChoose;
+        this.menuRemarks = menuRemarks;
+        this.menuFoodNum = menuFoodNum;
     }
 
     @Generated(hash = 859137273)
@@ -54,11 +67,11 @@ public class MenuInfo {
         this.menuIcon = menuIcon;
     }
 
-    public String getMenuPrice() {
+    public double getMenuPrice() {
         return menuPrice;
     }
 
-    public void setMenuPrice(String menuPrice) {
+    public void setMenuPrice(double menuPrice) {
         this.menuPrice = menuPrice;
     }
 
@@ -68,5 +81,37 @@ public class MenuInfo {
 
     public void setMenuId(String menuId) {
         this.menuId = menuId;
+    }
+
+    public boolean isChoose() {
+        return isChoose;
+    }
+
+    public void setChoose(boolean choose) {
+        isChoose = choose;
+    }
+
+    public boolean getIsChoose() {
+        return this.isChoose;
+    }
+
+    public void setIsChoose(boolean isChoose) {
+        this.isChoose = isChoose;
+    }
+
+    public List<String> getMenuRemarks() {
+        return menuRemarks;
+    }
+
+    public void setMenuRemarks(List<String> menuRemarks) {
+        this.menuRemarks = menuRemarks;
+    }
+
+    public int getMenuFoodNum() {
+        return menuFoodNum;
+    }
+
+    public void setMenuFoodNum(int menuFoodNum) {
+        this.menuFoodNum = menuFoodNum;
     }
 }

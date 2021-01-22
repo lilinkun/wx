@@ -6,7 +6,7 @@ import com.android.wx.db.DBManager;
 import com.android.wx.event.EventCenter;
 import com.android.wx.model.UserInfo;
 import com.android.wx.mvp.callback.presenter.impl.BasePresenter;
-import com.android.wx.view.UserInfoView;
+import com.android.wx.contract.UserInfoView;
 
 import java.util.List;
 

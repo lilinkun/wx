@@ -1,6 +1,5 @@
 package com.android.wx.activity;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
@@ -8,7 +7,6 @@ import android.view.View;
 
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -16,16 +14,15 @@ import android.widget.TextView;
 import com.android.wx.R;
 import com.android.wx.adapter.HomeDataAdapter;
 import com.android.wx.base.activity.MvpActivity;
-import com.android.wx.db.DBManager;
 import com.android.wx.event.EventCenter;
 import com.android.wx.model.Table;
 import com.android.wx.presenter.DiningHallPersenter;
-import com.android.wx.view.IDiningHallView;
+import com.android.wx.contract.IDiningHallView;
 import com.android.wx.weight.SpaceItemDecoration;
 import com.github.library.BaseQuickAdapter;
-import com.github.library.BaseViewHolder;
+
 import java.util.ArrayList;
-import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.GridLayoutManager;
