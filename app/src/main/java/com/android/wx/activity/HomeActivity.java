@@ -9,6 +9,7 @@ import com.android.wx.base.activity.MvpActivity;
 import com.android.wx.event.EventCenter;
 import com.android.wx.presenter.HomePerenter;
 import com.android.wx.contract.IHomeView;
+import com.android.wx.view.HomeClockInDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,9 +59,12 @@ public class HomeActivity extends MvpActivity<IHomeView, HomePerenter>  {
 
         tvLoginDate.setText(simpleDateFormat.format(date));
         tvLoginTime.setText(simpleDateFormat1.format(date));
+
+        HomeClockInDialog homeClockInDialog = new HomeClockInDialog(this);
+        homeClockInDialog.show();
     }
 
-    @OnClick({R.id.btn_home_halleat,R.id.rl_home_delivery})
+    @OnClick({R.id.btn_home_halleat,R.id.rl_home_delivery,R.id.rl_home_get,R.id.rl_vip})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btn_home_halleat:
@@ -74,6 +78,19 @@ public class HomeActivity extends MvpActivity<IHomeView, HomePerenter>  {
 
                 Intent intent1 = new Intent(this,DeliveryActivity.class);
                 startActivity(intent1);
+
+                break;
+
+            case R.id.rl_home_get:
+
+                Intent intent2 = new Intent(this,HomeGetActivity.class);
+                startActivity(intent2);
+                break;
+
+            case R.id.rl_vip:
+
+                Intent intent3 = new Intent(this,VipActivity.class);
+                startActivity(intent3);
 
                 break;
         }

@@ -1,34 +1,33 @@
 package com.android.wx.activity;
 
-import android.util.Log;
 import android.view.View;
 
 import com.android.wx.R;
 import com.android.wx.base.activity.MvpActivity;
-import com.android.wx.contract.IDeliveryView;
+import com.android.wx.contract.IHomeGetView;
 import com.android.wx.event.EventCenter;
-import com.android.wx.presenter.DeliveryPresenter;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.android.wx.presenter.HomeGetPresenter;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
 /**
- * @ClassName DeliveryActivity
+ * @ClassName HomeGetActivity
  * @Description TODO
- * @Author liguo
- * @Date 2021/1/22 20:35
+ * @Author Administrator
+ * @Date 2021/1/23 11:40
  */
-public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresenter>{
+public class HomeGetActivity extends MvpActivity<IHomeGetView, HomeGetPresenter> {
 
+    @BindView(R.id.rv_home_get)
+    RecyclerView rvHomeGet;
 
 
     @NonNull
     @Override
-    public DeliveryPresenter createPresenter() {
-        return new DeliveryPresenter();
+    public HomeGetPresenter createPresenter() {
+        return new HomeGetPresenter();
     }
 
     @Override
@@ -38,7 +37,7 @@ public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresent
 
     @Override
     public int getContentViewLayoutId() {
-        return R.layout.activity_delivery;
+        return R.layout.activity_home_get;
     }
 
     @Override
@@ -50,5 +49,4 @@ public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresent
     public void initData() {
 
     }
-
 }

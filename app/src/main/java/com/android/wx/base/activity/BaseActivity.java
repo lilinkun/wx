@@ -16,6 +16,7 @@ import de.greenrobot.event.EventBus;
  */
 public abstract class BaseActivity extends AppCompatActivity {
     protected VaryViewHelperController varyViewHelperController;
+    protected Bundle savedInstanceState;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -29,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.savedInstanceState = savedInstanceState;
         if (isRegisterEventBus() && !EventBus.getDefault().isRegistered(this)) {
             if (isRegisterEventBusForSticky()) {
                 EventBus.getDefault().registerSticky(this);

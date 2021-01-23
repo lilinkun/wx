@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.6"
-            android:background="@color/black"
+            android:background="@color/title_color"
             />
 
 
@@ -48,8 +48,8 @@
                 >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/tel"
                     android:textColor="#ff4b4b41"
                     android:textSize="14sp"
@@ -74,8 +74,8 @@
                 >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/name"
                     android:textColor="#ff4b4b41"
                     android:textSize="14sp"
@@ -100,8 +100,8 @@
                 >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/address"
                     android:textColor="#ff4b4b41"
                     android:textSize="14sp"
@@ -134,8 +134,8 @@
                     >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="房号"
                     android:textColor="#ff4b4b41"
                     android:textSize="14sp"
@@ -158,8 +158,8 @@
                     >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="城市"
                     android:textColor="#ff4b4b41"
                     android:textSize="14sp"
@@ -191,8 +191,8 @@
                     >
 
                     <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="22dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/province"
                         android:textColor="#ff4b4b41"
                         android:textSize="14sp"
@@ -215,8 +215,8 @@
                     >
 
                     <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="22dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/zip_code"
                         android:textColor="#ff4b4b41"
                         android:textSize="14sp"
@@ -243,8 +243,8 @@
                 >
 
                 <TextView
-                    android:layout_width="45dp"
-                    android:layout_height="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/remarks"
                     android:textColor="#ff4b4b41"
                     android:textSize="14sp"
@@ -252,7 +252,7 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="140dp"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:hint="@string/please_input_remarks"
                     android:background="@drawable/bg_adapter_choose_num"

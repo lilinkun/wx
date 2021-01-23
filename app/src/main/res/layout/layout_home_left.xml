@@ -31,7 +31,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:text="智佳基烤鸡福州万达店"
-            android:textColor="#ff2d2d04"
+            android:textColor="@color/title_color"
             android:textSize="@dimen/text_size_24" />
 
         <TextView
@@ -86,6 +86,7 @@
                     android:textSize="20sp" />
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/rl_vip"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

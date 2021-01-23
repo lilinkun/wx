@@ -98,7 +98,10 @@
     <string name="please_input_city">请输入城市</string>
     <string name="please_input_province">请输入省份</string>
     <string name="please_input_code">请输入邮编</string>
+    <string name="please_input_vipcard">请输入卡号</string>
     <string name="please_input_remarks">请输入备注内容</string>
+    <string name="please_input_surname">请输入您的姓氏</string>
+    <string name="please_input_email">请输入您的邮箱</string>
 
     <string name="remarks">备注</string>
     <string name="province">省份</string>
@@ -109,6 +112,38 @@
     <string name="name">姓名</string>
     <string name="tel">电话</string>
     <string name="delivery">外送</string>
+    <string name="back">返回</string>
+    <string name="go_order">点单</string>
+
+    <string name="get_find">找到</string>
+    <string name="get_order_num">份订单</string>
+    <string name="get_total_price">总计: $</string>
+    <string name="get_history">历史</string>
+    <string name="please_input_userinfo">请输入用户信息</string>
+    
+    <string name="get_go_order">启单: </string>
+    <string name="get_table_number">桌号: </string>
+    <string name="get_time">时间: </string>
+    <string name="get_price">金额: </string>
+    <string name="person">人</string>
+
+    <string name="vip_card">会员卡</string>
+    <string name="add_vip_card">添加会员卡</string>
+    <string name="vip_card_id">卡号</string>
+    <string name="back_home">返回首页</string>
+    <string name="search">查找</string>
+    <string name="surname">姓氏</string>
+    <string name="email">邮箱</string>
+    <string name="balance">余额</string>
+    <string name="integral">积分</string>
+    <string name="register_date">注册日期</string>
+    <string name="exit">取消</string>
+    <string name="add_other_info">+添加其他信息</string>
+
+    <string name="hello_day">认真工作的一天</string>
+    <string name="rest">休息</string>
+    <string name="call_a_day">收工</string>
+
 
     <array name="more_array">
         <item>礼品卡</item>

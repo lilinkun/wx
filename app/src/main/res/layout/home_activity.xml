@@ -115,6 +115,7 @@
                     </TextView>
                 </RelativeLayout>
                 <RelativeLayout
+                    android:id="@+id/rl_home_get"
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
                     android:background="@mipmap/home_get"

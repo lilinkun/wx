@@ -2,6 +2,6 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="60dp"
     android:layout_width="fill_parent"
-    android:textColor="@color/black"
+    android:textColor="@color/title_color"
     android:textSize="24sp"
     android:gravity="center"/>

@@ -32,6 +32,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.PreOrderActivity" />
         <activity android:name=".activity.DeliveryActivity" />
+        <activity android:name=".activity.HomeGetActivity" />
+        <activity android:name=".activity.VipActivity" />
     </application>
 
 </manifest>

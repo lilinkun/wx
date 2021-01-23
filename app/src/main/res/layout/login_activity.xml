@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="智佳基烤鸡福州万达店"
-                android:textColor="#ff2d2d04"
+                android:textColor="@color/title_color"
                 android:textSize="16sp"
                 />
         </LinearLayout>

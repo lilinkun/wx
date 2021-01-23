@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_remarks_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/hello_day"
+            android:textColor="@color/text_yellow_00"
+            android:textSize="20sp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="44dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="@string/rest"
+        android:gravity="center"
+        android:textColor="#ff666666"
+        android:textSize="24sp"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:background="@drawable/bg_adapter_choose_num"
+        />
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="@string/call_a_day"
+        android:gravity="center"
+        android:textColor="#ff666666"
+        android:textSize="24sp"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_adapter_choose_num"
+        />
+
+    <TextView
+        android:id="@+id/tv_back"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:gravity="center"
+        android:textColor="#ff666666"
+        android:textSize="24sp"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_adapter_choose_num"
+        />
+
+    </LinearLayout>
+
+</LinearLayout>

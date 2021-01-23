@@ -1,34 +1,28 @@
 package com.android.wx.activity;
 
-import android.util.Log;
 import android.view.View;
 
 import com.android.wx.R;
 import com.android.wx.base.activity.MvpActivity;
-import com.android.wx.contract.IDeliveryView;
+import com.android.wx.contract.IVipView;
 import com.android.wx.event.EventCenter;
-import com.android.wx.presenter.DeliveryPresenter;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.android.wx.presenter.VipPresenter;
 
 import androidx.annotation.NonNull;
-import butterknife.BindView;
 
 /**
- * @ClassName DeliveryActivity
+ * @ClassName VipActivity
  * @Description TODO
  * @Author liguo
- * @Date 2021/1/22 20:35
+ * @Date 2021/1/23 23:02
  */
-public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresenter>{
-
+public class VipActivity extends MvpActivity<IVipView,VipPresenter> {
 
 
     @NonNull
     @Override
-    public DeliveryPresenter createPresenter() {
-        return new DeliveryPresenter();
+    public VipPresenter createPresenter() {
+        return new VipPresenter();
     }
 
     @Override
@@ -38,7 +32,7 @@ public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresent
 
     @Override
     public int getContentViewLayoutId() {
-        return R.layout.activity_delivery;
+        return R.layout.activity_vip;
     }
 
     @Override
@@ -50,5 +44,4 @@ public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresent
     public void initData() {
 
     }
-
 }

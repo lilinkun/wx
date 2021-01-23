@@ -5,8 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorGray">#FFEEEEEE</color>
     <color name="colorBlue">#3182bb</color>
-    <color name="black">#2D2D04</color>
-    <color name="item_tab">#2D2D04</color>
     <color name="white">#FFFFFF</color>
 
     <color name="text_bottom_666">#666666</color>
@@ -18,5 +16,9 @@
     <color name="text_yellow_00">#FFB600</color>
 
     <color name="line_bg">#CCCCCC</color>
+
+    <color name="gray_line_99">#999999</color>
+
+    <color name="title_color">#2d2d04</color>
 
 </resources>

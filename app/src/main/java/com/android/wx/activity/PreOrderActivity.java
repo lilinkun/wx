@@ -64,6 +64,8 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     TextView tvGoodsNum;
     @BindView(R.id.tv_order_id)
     TextView tvOrderId;
+    @BindView(R.id.tv_pre_order_customer_num)
+    TextView tvPreOrderCustomerNum;
 
     private MenuFragment menuFragment;
     private MenuOrderAdapter menuOrderAdapter;
@@ -184,7 +186,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
 
     @Override
     public void onCustomerNum(int num) {
-        Toast.makeText(this,num+"",Toast.LENGTH_LONG).show();
+        tvPreOrderCustomerNum.setText(num + getString(R.string.person));
     }
 
     @Override
