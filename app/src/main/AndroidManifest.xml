@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.wx">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
@@ -27,6 +31,7 @@
             android:name=".activity.DiningHallActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.PreOrderActivity" />
+        <activity android:name=".activity.DeliveryActivity" />
     </application>
 
 </manifest>

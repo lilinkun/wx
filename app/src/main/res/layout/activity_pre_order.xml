@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="222"
                     android:textSize="14sp"
-                    android:textColor="#FFB600"
+                    android:textColor="@color/text_yellow_00"
                     android:gravity="center"
                     android:background="@drawable/tv_pre_order"
                     />
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#2D2D04"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:text="@string/tv_order"
                     android:layout_marginLeft="14dp"
                     />
@@ -140,20 +140,37 @@
                             android:orientation="vertical"
                             >
 
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                >
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="订单号: 9839283923"
+                                android:text="@string/order_orderid"
                                 android:textColor="#ff4b4b41"
-                                android:textSize="16sp"
+                                android:textSize="14sp"
                                 />
+
+                            <TextView
+                                android:id="@+id/tv_order_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ff4b4b41"
+                                android:text="9839283923"
+                                android:textSize="14sp"
+                                />
+
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="启单: 劳先生"
                                 android:textColor="#ff4b4b41"
-                                android:textSize="16sp"
+                                android:textSize="14sp"
                                 />
 
                         </LinearLayout>
@@ -170,7 +187,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="类型: 新单 未保存"
                                 android:textColor="#ff4b4b41"
-                                android:textSize="16sp"
+                                android:textSize="14sp"
                                 />
 
                             <TextView
@@ -178,7 +195,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="桌号: 2人"
                                 android:textColor="#ff4b4b41"
-                                android:textSize="16sp"
+                                android:textSize="14sp"
                                 />
 
                         </LinearLayout>
@@ -188,7 +205,7 @@
                             android:layout_height="wrap_content"
                             android:text="+添加备注"
                             android:textColor="#ff2d2d04"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             />
 
                     </LinearLayout>
@@ -362,9 +379,6 @@
                     />
 
                 </RelativeLayout>
-
-
-
 
 
             </LinearLayout>
@@ -571,7 +585,7 @@
                                 android:text="@string/preorder_go_kitchen"
                                 style="@style/tv_preorder_total"
                                 android:background="@drawable/bg_click_black"
-                                android:textColor="#FFB600"
+                                android:textColor="@color/text_yellow_00"
                                 />
 
 

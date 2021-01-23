@@ -61,6 +61,8 @@
     <string name="add_remarks">添加备注</string>
     <string name="please_input_remarks_info">请输入备注信息</string>
     <string name="please_input_remarks_money">请输入备注金额</string>
+    <string name="choose_food_num">编辑菜品数量</string>
+    <string name="input_food_num">请输入菜品数量</string>
 
     <string name="sure">确定</string>
 
@@ -80,6 +82,33 @@
     <string name="preorder_save">保存</string>
     <string name="preorder_pay">付款</string>
     <string name="preorder_go_kitchen">送厨</string>
+
+    <string name="order_orderid">订单号: </string>
+
+    <string name="order_edit">编辑</string>
+    <string name="order_print_list">打单</string>
+    <string name="order_separate_list">分单</string>
+    <string name="order_discount">折扣</string>
+    <string name="order_plus_get">加收</string>
+
+    <string name="please_input_tel">请输入用户电话号码</string>
+    <string name="please_input_customer">请输入用户名</string>
+    <string name="please_input_address">请输入地址</string>
+    <string name="please_input_room_number">请输入房号</string>
+    <string name="please_input_city">请输入城市</string>
+    <string name="please_input_province">请输入省份</string>
+    <string name="please_input_code">请输入邮编</string>
+    <string name="please_input_remarks">请输入备注内容</string>
+
+    <string name="remarks">备注</string>
+    <string name="province">省份</string>
+    <string name="zip_code">邮编</string>
+    <string name="city">城市</string>
+    <string name="address">地址</string>
+    <string name="room_number">房号</string>
+    <string name="name">姓名</string>
+    <string name="tel">电话</string>
+    <string name="delivery">外送</string>
 
     <array name="more_array">
         <item>礼品卡</item>

@@ -18,6 +18,7 @@ import com.android.wx.model.MenuTypeBean;
 import com.android.wx.presenter.PreOrderPresenter;
 import com.android.wx.contract.IPreOrderView;
 import com.android.wx.utils.UToast;
+import com.android.wx.view.PreOrderChooseNumDialog;
 import com.android.wx.view.PreOrderNumberDialog;
 import com.android.wx.weight.SpaceItemDecoration;
 import com.flyco.tablayout.SlidingTabLayout;
@@ -35,7 +36,7 @@ import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresenter> implements IPreOrderListener, PreOrderNumberDialog.OnPreOrderListener, MenuOrderAdapter.OnMenuOrderListener {
+public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresenter> implements IPreOrderListener, PreOrderNumberDialog.OnPreOrderListener, MenuOrderAdapter.OnMenuOrderListener, PreOrderChooseNumDialog.OnOreOrderChooseNumListener {
 
     @BindView(R.id.order_list_tablayou)
     SlidingTabLayout orderListTablayou;
@@ -61,10 +62,12 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     TextView tvPreorderTotal;
     @BindView(R.id.tv_goods_num)
     TextView tvGoodsNum;
+    @BindView(R.id.tv_order_id)
+    TextView tvOrderId;
 
     private MenuFragment menuFragment;
     private MenuOrderAdapter menuOrderAdapter;
-    private ArrayList<MenuInfo> menuInfos;
+    private List<MenuInfo> menuInfos;
     private PreOrderNumberDialog preOrderNumberDialog;
     private MenuInfo clickFoodMenu;
 
@@ -142,7 +145,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
         if (menuOrderAdapter == null) {
             menuInfos = new ArrayList<>();
             menuInfos.add(menuInfo);
-            menuOrderAdapter = new MenuOrderAdapter(this,menuInfos);
+            menuOrderAdapter = new MenuOrderAdapter(this,menuInfos,true);
             menuOrderAdapter.setListener(this);
             rvMenuList.setAdapter(menuOrderAdapter);
 
@@ -202,7 +205,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
         settle();
     }
 
-    @OnClick({R.id.tv_pre_order_plus,R.id.tv_pre_order_reduce,R.id.tv_pre_order_num,R.id.tv_pre_order_change_price,R.id.tv_preorder_exit,R.id.tv_preorder_delete})
+    @OnClick({R.id.tv_pre_order_plus,R.id.tv_pre_order_reduce,R.id.tv_pre_order_num,R.id.tv_pre_order_change_price,R.id.tv_preorder_exit,R.id.tv_preorder_delete,R.id.tv_preorder_go_kitchen})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_pre_order_plus:
@@ -236,6 +239,13 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
                 settle();
                 break;
             case R.id.tv_pre_order_num:
+                if(clickFoodMenu == null){
+                    UToast.show(this,R.string.no_choose_food_tip);
+                }else {
+                    PreOrderChooseNumDialog preOrderChooseNumDialog = new PreOrderChooseNumDialog(this,this);
+                    preOrderChooseNumDialog.show();
+                }
+
                 break;
             case R.id.tv_pre_order_change_price:
                 break;
@@ -267,10 +277,21 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
                 settle();
 
                 break;
+
+            case R.id.tv_preorder_go_kitchen:
+
+                for (MenuInfo menuInfo : menuInfos) {
+                    menuInfo.setOrderId(tvOrderId.getText().toString());
+                    DBManager.getInstance(this).insertOrderInfo(menuInfo);
+                    finish();
+                }
+
+                break;
         }
     }
 
 
+    //结算价格
     private void settle(){
         double totalPrice = 0;
         int stypeInt = 0;
@@ -289,4 +310,15 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
         tvGoodsNum.setText(totalInt + "");
     }
 
+    @Override
+    public void onChooseNumClick(int num) {
+        clickFoodMenu.setMenuFoodNum(num);
+        for(int i = 0;i<menuInfos.size();i++){
+            if (menuInfos.get(i) == clickFoodMenu){
+                menuInfos.get(i).setMenuFoodNum(num);
+                menuOrderAdapter.setData(menuInfos);
+            }
+        }
+        settle();
+    }
 }

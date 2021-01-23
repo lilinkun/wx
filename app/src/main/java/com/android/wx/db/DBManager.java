@@ -9,6 +9,7 @@ import com.android.wx.model.MenuInfo;
 import com.android.wx.model.MenuInfoDao;
 import com.android.wx.model.MenuTypeBean;
 import com.android.wx.model.MenuTypeBeanDao;
+import com.android.wx.model.OrderInfoBean;
 import com.android.wx.model.Table;
 import com.android.wx.model.TableDao;
 import com.android.wx.model.UserInfo;
@@ -147,6 +148,31 @@ public class DBManager {
         TableDao tableDao = daoSession.getTableDao();
         QueryBuilder<Table> qb = tableDao.queryBuilder();
         List<Table> list = qb.list();
+        return list;
+    }
+
+
+    /**
+     * 插入订单信息
+     * @param info
+     */
+    public void insertOrderInfo(MenuInfo info) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        MenuInfoDao menuInfoDao = daoSession.getMenuInfoDao();
+        menuInfoDao.insert(info);
+    }
+
+    /**
+     * 查询订单信息
+     * @param orderId
+     */
+    public List<MenuInfo> queryOrderInfo(String orderId) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        MenuInfoDao menuInfoDao = daoSession.getMenuInfoDao();
+        QueryBuilder<MenuInfo> qb = menuInfoDao.queryBuilder().where(MenuInfoDao.Properties.OrderId.eq(orderId));
+        List<MenuInfo> list = qb.list();
         return list;
     }
 

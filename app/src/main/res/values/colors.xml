@@ -15,4 +15,8 @@
 
     <color name="text_yellow">#FFB700</color>
 
+    <color name="text_yellow_00">#FFB600</color>
+
+    <color name="line_bg">#CCCCCC</color>
+
 </resources>

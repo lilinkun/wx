@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/order_edit"
+        />
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/preorder_go_kitchen"
+        />
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/order_print_list"
+        />
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/preorder_pay"
+        />
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/order_separate_list"
+        />
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/order_discount"
+        />
+
+    <TextView
+        style="@style/tv_dialog_order_btn"
+        android:text="@string/order_plus_get"
+        />
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -33,7 +33,7 @@ public class MenuFragment extends BaseFragment implements PreOrderMenuAdapter.On
         menuInfos = new ArrayList<>();
 
         for (int i = 0; i<20;i++) {
-            MenuInfo menuInfo = new MenuInfo("促销活动","至尊蔬菜沙拉"+i,"asdadsa",5000.00,"123456",false,null,1);
+            MenuInfo menuInfo = new MenuInfo("促销活动","至尊蔬菜沙拉"+i,"asdadsa",5000.00,"123456",false,null,1,"");
             menuInfos.add(menuInfo);
         }
 

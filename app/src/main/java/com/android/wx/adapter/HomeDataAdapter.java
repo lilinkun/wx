@@ -14,12 +14,13 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHolder> {
+public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHolder> implements View.OnClickListener {
 
     private ArrayList<Table> tableDaos;
     private Context context;
     //type 0:全部展示 1:价格 2：时长 3：单号 4：时间 5：人数 6：状态 7：前台  8：顾客姓名
     private int type = 1;
+    private OnHomeDataClickListener onHomeDataClickListener;
 
     public HomeDataAdapter(ArrayList<Table> tableDaos, Context context){
         this.tableDaos = tableDaos;
@@ -39,11 +40,15 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
 
         ViewHolder viewHolder = new ViewHolder(v);
 
+        v.setOnClickListener(this);
+
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        holder.itemView.setTag(position);
 
         holder.mPrice1.setText(tableDaos.get(position).getAmount1()+"");
         holder.mPrice2.setText(tableDaos.get(position).getAmount2()+"");
@@ -90,6 +95,21 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
     @Override
     public int getItemViewType(int position) {
         return position;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (onHomeDataClickListener != null){
+            onHomeDataClickListener.onItemClick((Integer) view.getTag());
+        }
+    }
+
+    public void setListener(OnHomeDataClickListener onHomeDataClickListener){
+        this.onHomeDataClickListener = onHomeDataClickListener;
+    }
+
+    public interface OnHomeDataClickListener{
+        public void onItemClick(int position);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

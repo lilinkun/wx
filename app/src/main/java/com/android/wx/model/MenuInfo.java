@@ -8,6 +8,7 @@ import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * create data 2021/1/19
  */
 @Entity
-public class MenuInfo {
+public class MenuInfo{
     private String menuType;//菜品类型
     private String menuName;//菜单名
     private String menuIcon;//菜品图片
@@ -25,10 +26,12 @@ public class MenuInfo {
     @Convert(columnType = String.class, converter = StringConverter.class)
     private List<String> menuRemarks; //菜单备注
     private int menuFoodNum; //菜品数量
+    private String orderId;
 
-    @Generated(hash = 1085574067)
+    @Generated(hash = 67656289)
     public MenuInfo(String menuType, String menuName, String menuIcon, double menuPrice,
-            String menuId, boolean isChoose, List<String> menuRemarks, int menuFoodNum) {
+            String menuId, boolean isChoose, List<String> menuRemarks, int menuFoodNum,
+            String orderId) {
         this.menuType = menuType;
         this.menuName = menuName;
         this.menuIcon = menuIcon;
@@ -37,6 +40,7 @@ public class MenuInfo {
         this.isChoose = isChoose;
         this.menuRemarks = menuRemarks;
         this.menuFoodNum = menuFoodNum;
+        this.orderId = orderId;
     }
 
     @Generated(hash = 859137273)
@@ -113,5 +117,13 @@ public class MenuInfo {
 
     public void setMenuFoodNum(int menuFoodNum) {
         this.menuFoodNum = menuFoodNum;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

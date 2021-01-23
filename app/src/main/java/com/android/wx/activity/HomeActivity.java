@@ -60,9 +60,22 @@ public class HomeActivity extends MvpActivity<IHomeView, HomePerenter>  {
         tvLoginTime.setText(simpleDateFormat1.format(date));
     }
 
-    @OnClick({R.id.btn_home_halleat})
+    @OnClick({R.id.btn_home_halleat,R.id.rl_home_delivery})
     public void onClick(View view){
-        Intent intent = new Intent(this,DiningHallActivity.class);
-        startActivity(intent);
+        switch (view.getId()){
+            case R.id.btn_home_halleat:
+
+                Intent intent = new Intent(this,DiningHallActivity.class);
+                startActivity(intent);
+
+                break;
+
+            case R.id.rl_home_delivery:
+
+                Intent intent1 = new Intent(this,DeliveryActivity.class);
+                startActivity(intent1);
+
+                break;
+        }
     }
 }

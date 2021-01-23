@@ -76,5 +76,14 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
     </style>
+    
+    <style name="tv_dialog_order_btn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_menu_order</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
 
 </resources>

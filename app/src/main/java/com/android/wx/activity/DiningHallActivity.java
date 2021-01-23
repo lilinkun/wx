@@ -18,6 +18,7 @@ import com.android.wx.event.EventCenter;
 import com.android.wx.model.Table;
 import com.android.wx.presenter.DiningHallPersenter;
 import com.android.wx.contract.IDiningHallView;
+import com.android.wx.view.OrderInfoDialog;
 import com.android.wx.weight.SpaceItemDecoration;
 import com.github.library.BaseQuickAdapter;
 
@@ -35,7 +36,7 @@ import butterknife.OnClick;
  * on 2021/1/15
  * 堂食
  */
-public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallPersenter> {
+public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallPersenter> implements HomeDataAdapter.OnHomeDataClickListener {
     @BindView(R.id.recycler_table)
     RecyclerView tabList;
     BaseQuickAdapter baseQuickAdapter;
@@ -62,6 +63,7 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
     Switch swHall;
 
     private HomeDataAdapter homeDataAdapter;
+    private ArrayList<Table> tables;
 
 
     @NonNull
@@ -113,20 +115,20 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
         spinner.setAdapter(spinnerAdapter);
     }
     public void listData() {
-        ArrayList<Table> tables = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            table = new Table(1231,"西红柿","88888888","4人",892,992,845,"空闲",12345,"88:55","张三","1楼");
+        tables = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            table = new Table(1231,"西红柿","9839283923","4人",892,992,845,"空闲",12345,"88:55","张三","1楼");
             tables.add(table);
 //            DBManager.getInstance(this).insertTable(table);
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 4; i++) {
             table = new Table(1231,"西红柿222","6213121431","4人",892,992,845,"空闲",12345,"88:55","张三","2楼");
             tables.add(table);
 //            DBManager.getInstance(this).insertTable(table);
         }
 
         homeDataAdapter = new HomeDataAdapter(tables,this);
-
+        homeDataAdapter.setListener(this);
         GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 4);
         tabList.addItemDecoration(new SpaceItemDecoration(30, SpaceItemDecoration.GRIDLAYOUT));
         tabList.setLayoutManager(linearLayoutManager);
@@ -266,4 +268,11 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
         tvHomeStatus.setBackgroundResource(R.drawable.bg_home_text_bottom_unselect);
     }
 
+    @Override
+    public void onItemClick(int position) {
+        if (tables != null) {
+            OrderInfoDialog orderInfoDialog = new OrderInfoDialog(this, tables.get(position).getOrderNumber());
+            orderInfoDialog.show();
+        }
+    }
 }

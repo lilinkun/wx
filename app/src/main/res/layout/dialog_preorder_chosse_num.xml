@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@string/choose_customer_num"
             android:layout_centerInParent="true"
-            android:textColor="#FFB600"
+            android:textColor="@color/text_yellow_00"
             android:textSize="22sp"
             />
 
@@ -75,7 +75,7 @@
         android:paddingBottom="@dimen/dp_10"
         android:text="@string/start_preorder"
         android:gravity="center"
-        android:textColor="#FFB600"
+        android:textColor="@color/text_yellow_00"
         android:background="@drawable/bg_adapter_choose_num_sure"
         android:textSize="22sp"
         />
