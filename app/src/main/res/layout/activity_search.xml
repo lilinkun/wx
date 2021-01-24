@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_top_height"
+        android:background="@color/title_color"
+        >
+
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:text="@string/preorder_exit"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:background="@drawable/bg_gray_hollow_rectangle"
+            android:layout_marginLeft="@dimen/dp_10"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/home_change_order"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            />
+
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:hint="@string/search_orderid"
+            android:textSize="@dimen/sp_16"
+            android:textColorHint="#B8B8B2"
+            android:drawableLeft="@drawable/ic_search"
+            android:background="@drawable/bg_gray_hollow_rectangle"
+            />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

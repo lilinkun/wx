@@ -84,6 +84,7 @@
     <string name="preorder_go_kitchen">送厨</string>
 
     <string name="order_orderid">订单号: </string>
+    <string name="search_orderid">订单编号</string>
 
     <string name="order_edit">编辑</string>
     <string name="order_print_list">打单</string>
@@ -143,6 +144,7 @@
     <string name="hello_day">认真工作的一天</string>
     <string name="rest">休息</string>
     <string name="call_a_day">收工</string>
+    <string name="change_table">换桌</string>
 
 
     <array name="more_array">

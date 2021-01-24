@@ -18,10 +18,12 @@ import java.util.List;
 public class OrderInfoBean implements Serializable {
 
     String orderId;
+    String order_time;
     public static final long serialVersionUID = 12331;
 
-    public OrderInfoBean(String orderId) {
+    public OrderInfoBean(String orderId,String order_time) {
         this.orderId = orderId;
+        this.order_time = order_time;
     }
 
     public OrderInfoBean() {
@@ -35,4 +37,11 @@ public class OrderInfoBean implements Serializable {
         this.orderId = orderId;
     }
 
+    public String getOrder_time() {
+        return order_time;
+    }
+
+    public void setOrder_time(String order_time) {
+        this.order_time = order_time;
+    }
 }

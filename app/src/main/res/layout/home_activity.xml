@@ -99,6 +99,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:id="@+id/rl_find_order"
                     android:layout_weight="1"
                     android:background="@mipmap/home_change_order"
                     android:layout_width="wrap_content"

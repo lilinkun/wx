@@ -30,10 +30,16 @@
         <activity
             android:name=".activity.DiningHallActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.PreOrderActivity" />
-        <activity android:name=".activity.DeliveryActivity" />
-        <activity android:name=".activity.HomeGetActivity" />
-        <activity android:name=".activity.VipActivity" />
+        <activity android:name=".activity.PreOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.DeliveryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.HomeGetActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.VipActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
