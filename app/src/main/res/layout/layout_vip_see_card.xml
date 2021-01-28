@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_see_vipcard_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_home_get">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <TextView
+                style="@style/vip_text_bg"
+                android:text="@string/vip_card_id"
+                />
+
+            <TextView
+                android:id="@+id/tv_see_vip_card"
+                style="@style/vip_edit"
+                android:gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <TextView
+                style="@style/vip_text_bg"
+                android:text="@string/username"
+                />
+
+            <TextView
+                android:id="@+id/tv_see_username"
+                style="@style/vip_edit"
+                android:gravity="center_vertical"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <TextView
+                style="@style/vip_text_bg"
+                android:text="@string/balance"
+                />
+
+            <TextView
+                android:id="@+id/tv_see_balance"
+                style="@style/vip_edit"
+                android:gravity="center_vertical"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <TextView
+                android:text="@string/integral"
+                style="@style/vip_text_bg"
+                />
+
+            <EditText
+                android:id="@+id/tv_see_integral"
+                style="@style/vip_edit"
+                android:gravity="center_vertical"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+
+            <TextView
+                android:text="@string/register_date"
+                style="@style/vip_text_bg"
+                />
+
+            <TextView
+                android:id="@+id/tv_see_start_time"
+                style="@style/vip_text_bg"
+                android:layout_marginLeft="5dp"
+                />
+
+
+            <TextView
+                style="@style/vip_text_bg"
+                android:text="@string/to"
+                android:layout_marginLeft="5dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_see_effective_date"
+                style="@style/vip_text_bg"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    style="@style/vip_btn_bg"
+                    android:text="@string/back"
+                    android:background="@drawable/bg_adapter_choose_num"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_customer_info"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="@string/order_customer_info"
+                    android:textColor="@color/text_yellow_00"
+                    android:background="@drawable/bg_home_text_bottom_select"
+                    android:layout_centerVertical="true"
+                    style="@style/vip_btn_bg"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_copy"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="@string/vip_copy"
+                    android:textColor="@color/text_yellow_00"
+                    android:background="@drawable/bg_home_text_bottom_select"
+                    android:layout_centerVertical="true"
+                    style="@style/vip_btn_bg"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_see_history"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="@string/get_history"
+                    android:textColor="@color/text_yellow_00"
+                    android:background="@drawable/bg_home_text_bottom_select"
+                    android:layout_centerVertical="true"
+                    style="@style/vip_btn_bg"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_see_recharge"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/recharge"
+                    android:layout_centerVertical="true"
+                    style="@style/tv_preorder_total"
+                    android:background="@drawable/bg_click_red"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="5dp"
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+</LinearLayout>

@@ -63,6 +63,7 @@
     <string name="please_input_remarks_money">请输入备注金额</string>
     <string name="choose_food_num">编辑菜品数量</string>
     <string name="input_food_num">请输入菜品数量</string>
+    <string name="input_recharge_num">请输入充值数量</string>
 
     <string name="sure">确定</string>
 
@@ -103,6 +104,7 @@
     <string name="please_input_remarks">请输入备注内容</string>
     <string name="please_input_surname">请输入您的姓氏</string>
     <string name="please_input_email">请输入您的邮箱</string>
+    <string name="please_input_customer_num">请选择就餐人数</string>
 
     <string name="remarks">备注</string>
     <string name="province">省份</string>
@@ -115,6 +117,8 @@
     <string name="delivery">外送</string>
     <string name="back">返回</string>
     <string name="go_order">点单</string>
+    <string name="username">名字</string>
+    <string name="birth">生日</string>
 
     <string name="get_find">找到</string>
     <string name="get_order_num">份订单</string>
@@ -129,6 +133,7 @@
     <string name="person">人</string>
 
     <string name="vip_card">会员卡</string>
+    <string name="entity_card">实体卡</string>
     <string name="add_vip_card">添加会员卡</string>
     <string name="vip_card_id">卡号</string>
     <string name="back_home">返回首页</string>
@@ -136,16 +141,52 @@
     <string name="surname">姓氏</string>
     <string name="email">邮箱</string>
     <string name="balance">余额</string>
+    <string name="history_balance">历史余额</string>
     <string name="integral">积分</string>
-    <string name="register_date">注册日期</string>
+    <string name="register_date">注册日期:</string>
     <string name="exit">取消</string>
     <string name="add_other_info">+添加其他信息</string>
+    <string name="add_vip">返回添加主要信息</string>
+    <string name="to">至</string>
+    <string name="use_integral">可用积分</string>
 
     <string name="hello_day">认真工作的一天</string>
     <string name="rest">休息</string>
     <string name="call_a_day">收工</string>
     <string name="change_table">换桌</string>
+    <string name="unsave">未保存</string>
+    <string name="idle">空闲</string>
+    <string name="pleasr_choose_food">请选择菜肴</string>
+    <string name="table">桌</string>
+    <string name="total_report">总报表</string>
+    <string name="staff_record">员工工时记录</string>
 
+    <string name="search_order_time">订单时间</string>
+    <string name="search_order_status">订单状态</string>
+    <string name="search_order_style">订单类型</string>
+    <string name="search_order_mode">付款方式</string>
+    <string name="search_order_price">折扣与费用</string>
+    <string name="search_order_local">用餐区</string>
+    <string name="search_order_delivery">配送员</string>
+    <string name="search_order_person">点单员</string>
+
+    <string name="text_Myinfo_day">日</string>
+    <string name="text_Myinfo_month">月</string>
+    <string name="text_Myinfo_years">年</string>
+    <string name="text_change_cancle">取消</string>
+    <string name="text_change_ok">完成</string>
+    <string name="choose_time">请选择时间</string>
+
+    <string name="vip_incomplete">请完整填写会员卡</string>
+    <string name="vip_complete">会员保存成功</string>
+    <string name="vip_exist">这个会员已经存在</string>
+    <string name="vip_unexist">此会员不存在</string>
+
+    <string name="search_vip">查看会员卡</string>
+    <string name="add_new_card">添加新卡</string>
+    <string name="vip_copy">打印</string>
+    <string name="recharge">充值</string>
+    <string name="operator">操作者</string>
 
     <array name="more_array">
         <item>礼品卡</item>

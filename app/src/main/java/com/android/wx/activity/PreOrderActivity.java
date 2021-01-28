@@ -1,5 +1,7 @@
 package com.android.wx.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -8,6 +10,7 @@ import android.widget.Toast;
 import com.android.wx.R;
 import com.android.wx.adapter.MenuOrderAdapter;
 import com.android.wx.adapter.TabPageAdapter;
+import com.android.wx.base.MyApplication;
 import com.android.wx.base.activity.MvpActivity;
 import com.android.wx.db.DBManager;
 import com.android.wx.event.EventCenter;
@@ -15,9 +18,12 @@ import com.android.wx.fragment.MenuFragment;
 import com.android.wx.interf.IPreOrderListener;
 import com.android.wx.model.MenuInfo;
 import com.android.wx.model.MenuTypeBean;
+import com.android.wx.model.OrderInfoBean;
+import com.android.wx.model.Table;
 import com.android.wx.presenter.PreOrderPresenter;
 import com.android.wx.contract.IPreOrderView;
 import com.android.wx.utils.UToast;
+import com.android.wx.utils.WxUtil;
 import com.android.wx.view.PreOrderChooseNumDialog;
 import com.android.wx.view.PreOrderNumberDialog;
 import com.android.wx.weight.SpaceItemDecoration;
@@ -66,13 +72,25 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     TextView tvOrderId;
     @BindView(R.id.tv_pre_order_customer_num)
     TextView tvPreOrderCustomerNum;
+    @BindView(R.id.tv_unsave)
+    TextView tvUnsave;
+    @BindView(R.id.tv_pre_order_table_num)
+    TextView tvPreOrderTableNum;
+    @BindView(R.id.tv_orderer)
+    TextView tvOrderer;
 
     private MenuFragment menuFragment;
     private MenuOrderAdapter menuOrderAdapter;
     private List<MenuInfo> menuInfos;
     private PreOrderNumberDialog preOrderNumberDialog;
     private MenuInfo clickFoodMenu;
+    private Table table;
+    private int num;
 
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd yyyy");
+    SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+
+//    SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyymmdd");
 
     @Override
     public View getLoadingTargeView() {
@@ -92,15 +110,22 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     @Override
     public void initData() {
 
+        table = (Table)getIntent().getSerializableExtra("table");
+
         MenuTypeBean menuTypeBean = new MenuTypeBean();
         menuTypeBean.setMenuType(getString(R.string.tv_menu_type1));
         menuTypeBean.setMenuTypeId("1231");
         DBManager.getInstance(this).insertMenuTypeBean(menuTypeBean);
 
-        Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd yyyy");
-        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+        tvPreOrderTableNum.setText(table.getTableNum() + getString(R.string.table));
 
+        if (MyApplication.userInfo != null){
+            tvOrderer.setText(MyApplication.userInfo.getName());
+        }
+
+        Date date = new Date();
+        WxUtil.orderNum += 1;
+        tvOrderId.setText(date.getTime()/1000 +""+ WxUtil.orderNum);
         tvPreorderDate.setText(simpleDateFormat.format(date));
         tvPreorderTime.setText(simpleDateFormat1.format(date));
 
@@ -186,6 +211,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
 
     @Override
     public void onCustomerNum(int num) {
+        this.num = num;
         tvPreOrderCustomerNum.setText(num + getString(R.string.person));
     }
 
@@ -207,7 +233,8 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
         settle();
     }
 
-    @OnClick({R.id.tv_pre_order_plus,R.id.tv_pre_order_reduce,R.id.tv_pre_order_num,R.id.tv_pre_order_change_price,R.id.tv_preorder_exit,R.id.tv_preorder_delete,R.id.tv_preorder_go_kitchen})
+    @OnClick({R.id.tv_pre_order_plus,R.id.tv_pre_order_reduce,R.id.tv_pre_order_num,R.id.tv_pre_order_change_price,R.id.tv_preorder_exit,R.id.tv_preorder_delete,R.id.tv_preorder_go_kitchen,R.id.tv_preorder_save
+            ,R.id.tv_customer_num,R.id.tv_pre_order_report})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_pre_order_plus:
@@ -244,7 +271,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
                 if(clickFoodMenu == null){
                     UToast.show(this,R.string.no_choose_food_tip);
                 }else {
-                    PreOrderChooseNumDialog preOrderChooseNumDialog = new PreOrderChooseNumDialog(this,this);
+                    PreOrderChooseNumDialog preOrderChooseNumDialog = new PreOrderChooseNumDialog(this,this,0);
                     preOrderChooseNumDialog.show();
                 }
 
@@ -282,11 +309,59 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
 
             case R.id.tv_preorder_go_kitchen:
 
-                for (MenuInfo menuInfo : menuInfos) {
-                    menuInfo.setOrderId(tvOrderId.getText().toString());
-                    DBManager.getInstance(this).insertOrderInfo(menuInfo);
-                    finish();
+                if (num == 0){
+                    UToast.show(this,R.string.please_input_customer_num);
+                    return;
                 }
+
+
+                if (menuInfos != null && menuInfos.size() > 0) {
+
+                    for (MenuInfo menuInfo : menuInfos) {
+                        menuInfo.setOrderId(tvOrderId.getText().toString());
+                        DBManager.getInstance(this).insertOrderInfo(menuInfo);
+
+                    }
+
+                    table.setStatue(getString(R.string.preorder_go_kitchen));
+                    long timeStr = (new Date()).getTime();
+                    table.setTime(timeStr);
+//                    table.setTimeOld();
+                    table.setOrderNumber(tvOrderId.getText().toString());
+                    table.setTotalAmountPrice(Double.valueOf(tvPreorderTotalPrice.getText().toString()));
+                    table.setPersionNo(num+"");
+                    DBManager.getInstance(this).updateTable(table);
+
+                    OrderInfoBean orderInfoBean = new OrderInfoBean(tvOrderId.getText().toString(),String.valueOf(timeStr),
+                            Integer.valueOf(tvPreorderTotal.getText().toString()),Integer.valueOf(tvGoodsNum.getText().toString()),Double.valueOf(tvPreorderTotalPrice.getText().toString()));
+                    DBManager.getInstance(this).insertOrder(orderInfoBean);
+
+                    setResult(RESULT_OK);
+                    finish();
+
+                }else {
+                    UToast.show(this,getString(R.string.pleasr_choose_food));
+                }
+
+                break;
+
+            case R.id.tv_preorder_save:
+
+                tvUnsave.setText(R.string.preorder_save);
+
+                break;
+
+            case R.id.tv_customer_num:
+
+                preOrderNumberDialog.show();
+
+                break;
+
+            case R.id.tv_pre_order_report:
+
+                Intent intent = new Intent(this,ReportActivity.class);
+                startActivity(intent);
+
 
                 break;
         }

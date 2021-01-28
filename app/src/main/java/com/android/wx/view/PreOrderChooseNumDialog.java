@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.wx.R;
 import com.android.wx.adapter.PreOrderChooseNumAdapter;
@@ -23,14 +24,19 @@ public class PreOrderChooseNumDialog extends Dialog implements PreOrderChooseNum
     private Context context;
     private RecyclerView rvDialogChooseNum;
     private EditText etChooseNum;
+    private TextView tvTitleName;
     private ArrayList<String> strings;
     private LinearLayout llRemarksBack;
     private OnOreOrderChooseNumListener onOreOrderChooseNumListener;
 
-    public PreOrderChooseNumDialog(@NonNull Context context,OnOreOrderChooseNumListener onOreOrderChooseNumListener) {
+    //0：改变点餐的数量 1：充值的数量
+    int type = 0;
+
+    public PreOrderChooseNumDialog(@NonNull Context context,OnOreOrderChooseNumListener onOreOrderChooseNumListener,int type) {
         super(context);
         this.context = context;
         this.onOreOrderChooseNumListener = onOreOrderChooseNumListener;
+        this.type = type;
     }
 
     @Override
@@ -42,6 +48,13 @@ public class PreOrderChooseNumDialog extends Dialog implements PreOrderChooseNum
         llRemarksBack.setOnClickListener(this);
         rvDialogChooseNum = findViewById(R.id.rv_dialog_choose_num);
         etChooseNum = findViewById(R.id.et_chosse_num);
+        tvTitleName = findViewById(R.id.tv_title_name);
+
+        if (type == 1){
+            etChooseNum.setHint(R.string.input_recharge_num);
+            tvTitleName.setText(R.string.recharge);
+        }
+
 
         strings = new ArrayList();
 

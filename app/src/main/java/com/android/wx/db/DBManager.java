@@ -10,10 +10,13 @@ import com.android.wx.model.MenuInfoDao;
 import com.android.wx.model.MenuTypeBean;
 import com.android.wx.model.MenuTypeBeanDao;
 import com.android.wx.model.OrderInfoBean;
+import com.android.wx.model.OrderInfoBeanDao;
 import com.android.wx.model.Table;
 import com.android.wx.model.TableDao;
 import com.android.wx.model.UserInfo;
 import com.android.wx.model.UserInfoDao;
+import com.android.wx.model.VipInfoBean;
+import com.android.wx.model.VipInfoBeanDao;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -140,13 +143,24 @@ public class DBManager {
     }
 
     /**
+     * 修改餐桌信息
+     * @param table
+     */
+    public void updateTable(Table table) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        TableDao tableDao = daoSession.getTableDao();
+        tableDao.update(table);
+    }
+
+    /**
      * 查询餐桌信息
      */
-    public List<Table> queryTable() {
+    public List<Table> queryTable(String tableNum) {
         DaoMaster daoMaster = new DaoMaster(getReadableDatabase());
         DaoSession daoSession = daoMaster.newSession();
         TableDao tableDao = daoSession.getTableDao();
-        QueryBuilder<Table> qb = tableDao.queryBuilder();
+        QueryBuilder<Table> qb = tableDao.queryBuilder().where(TableDao.Properties.FloorName.eq(tableNum));
         List<Table> list = qb.list();
         return list;
     }
@@ -164,6 +178,17 @@ public class DBManager {
     }
 
     /**
+     * 修改订单信息
+     * @param info
+     */
+    public void updateOrderInfo(MenuInfo info) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        MenuInfoDao menuInfoDao = daoSession.getMenuInfoDao();
+        menuInfoDao.insert(info);
+    }
+
+    /**
      * 查询订单信息
      * @param orderId
      */
@@ -173,6 +198,78 @@ public class DBManager {
         MenuInfoDao menuInfoDao = daoSession.getMenuInfoDao();
         QueryBuilder<MenuInfo> qb = menuInfoDao.queryBuilder().where(MenuInfoDao.Properties.OrderId.eq(orderId));
         List<MenuInfo> list = qb.list();
+        return list;
+    }
+
+    /**
+     * 查询所有订单信息
+     */
+    public List<MenuInfo> queryOrderInfo() {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        MenuInfoDao menuInfoDao = daoSession.getMenuInfoDao();
+        QueryBuilder<MenuInfo> qb = menuInfoDao.queryBuilder();
+        List<MenuInfo> list = qb.list();
+        return list;
+    }
+
+    /**
+     * 插入订单信息
+     * @param info
+     */
+    public void insertOrder(OrderInfoBean info) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        OrderInfoBeanDao orderInfoBeanDao = daoSession.getOrderInfoBeanDao();
+        orderInfoBeanDao.insert(info);
+    }
+
+
+    /**
+     * 查询所有订单信息
+     */
+    public List<OrderInfoBean> queryOrder() {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        OrderInfoBeanDao orderInfoBeanDao = daoSession.getOrderInfoBeanDao();
+        QueryBuilder<OrderInfoBean> qb = orderInfoBeanDao.queryBuilder();
+        List<OrderInfoBean> list = qb.list();
+        return list;
+    }
+
+
+    /**
+     * 插入会员信息
+     * @param info
+     */
+    public void insertVipCard(VipInfoBean info) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        VipInfoBeanDao vipInfoBeanDao = daoSession.getVipInfoBeanDao();
+        vipInfoBeanDao.insert(info);
+    }
+
+    /**
+     * 通过会员号查询会员信息
+     */
+    public List<VipInfoBean> queryVipCard(String vipCrad) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        VipInfoBeanDao vipInfoBeanDao = daoSession.getVipInfoBeanDao();
+        QueryBuilder<VipInfoBean> qb = vipInfoBeanDao.queryBuilder().where(VipInfoBeanDao.Properties.CardId.eq(vipCrad));
+        List<VipInfoBean> list = qb.list();
+        return list;
+    }
+
+    /**
+     * 查询所有会员信息
+     */
+    public List<VipInfoBean> queryVipCard() {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        VipInfoBeanDao vipInfoBeanDao = daoSession.getVipInfoBeanDao();
+        QueryBuilder<VipInfoBean> qb = vipInfoBeanDao.queryBuilder();
+        List<VipInfoBean> list = qb.list();
         return list;
     }
 

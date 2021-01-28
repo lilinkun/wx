@@ -12,20 +12,27 @@ import java.util.List;
 /**
  * @ClassName OrderInfoBean
  * @Description 订单实体
- * @Author liguo
  * @Date 2021/1/22 16:42
  */
-public class OrderInfoBean implements Serializable {
+@Entity
+public class OrderInfoBean {
 
     String orderId;
-    String order_time;
-    public static final long serialVersionUID = 12331;
+    String orderTime;
+    int type;
+    int total;
+    double totalPrice;
 
-    public OrderInfoBean(String orderId,String order_time) {
+    @Generated(hash = 748250291)
+    public OrderInfoBean(String orderId, String orderTime, int type, int total, double totalPrice) {
         this.orderId = orderId;
-        this.order_time = order_time;
+        this.orderTime = orderTime;
+        this.type = type;
+        this.total = total;
+        this.totalPrice = totalPrice;
     }
 
+    @Generated(hash = 66300297)
     public OrderInfoBean() {
     }
 
@@ -37,11 +44,35 @@ public class OrderInfoBean implements Serializable {
         this.orderId = orderId;
     }
 
-    public String getOrder_time() {
-        return order_time;
+    public String getOrderTime() {
+        return this.orderTime;
     }
 
-    public void setOrder_time(String order_time) {
-        this.order_time = order_time;
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

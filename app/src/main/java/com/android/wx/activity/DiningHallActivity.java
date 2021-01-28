@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.android.wx.R;
 import com.android.wx.adapter.HomeDataAdapter;
 import com.android.wx.base.activity.MvpActivity;
+import com.android.wx.db.DBManager;
 import com.android.wx.event.EventCenter;
 import com.android.wx.model.Table;
 import com.android.wx.presenter.DiningHallPersenter;
@@ -23,8 +25,10 @@ import com.android.wx.weight.SpaceItemDecoration;
 import com.github.library.BaseQuickAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,8 +67,9 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
     Switch swHall;
 
     private HomeDataAdapter homeDataAdapter;
-    private ArrayList<Table> tables;
-
+    private List<Table> tables;
+    final String[] spinnerItems = {"一楼","二楼","三楼"};
+    String floor;
 
     @NonNull
     @Override
@@ -107,27 +112,75 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
 
 
     public void initSp(){
-        final String[] spinnerItems = {"一楼","二楼","三楼"};
         //简单的string数组适配器：样式res，数组
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
                 R.layout.item_spinselect, spinnerItems);
         spinnerAdapter.setDropDownViewResource(R.layout.item_spinselect);
         spinner.setAdapter(spinnerAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (homeDataAdapter != null && !floor.equals(spinnerItems[i])){
+                    homeDataAdapter.setFloor(spinnerItems[i]);
+                    floor = spinnerItems[i];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
     public void listData() {
         tables = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            table = new Table(1231,"西红柿","9839283923","4人",892,992,845,"空闲",12345,"88:55","张三","1楼");
+        /*for (int i = 0; i < 4; i++) {
+            //"西红柿","9839283923","4人",892,992,845,getString(R.string.idle),12345,"88:55","张三",spinnerItems[0],i+1+""
+            table = new Table();
+            table.setAmount1(892);
+            table.setAmount2(992);
+            table.setAmount3(845);
+            table.setStatue(getString(R.string.idle));
+            table.setFloorName(spinnerItems[0]);
+            table.setName("西红柿");
+            table.setPersionNo("4人");
+            table.setTableNum(i+1+"");
             tables.add(table);
-//            DBManager.getInstance(this).insertTable(table);
-        }
-        for (int i = 0; i < 4; i++) {
-            table = new Table(1231,"西红柿222","6213121431","4人",892,992,845,"空闲",12345,"88:55","张三","2楼");
+            DBManager.getInstance(this).insertTable(table);
+        }*/
+        /*for (int i = 0; i < 4; i++) {
+            table = new Table(1231,"西红柿222","6213121431","4人",892,992,845,getString(R.string.idle),12345,"88:55","张三",spinnerItems[1],i+1+"");
             tables.add(table);
-//            DBManager.getInstance(this).insertTable(table);
+            DBManager.getInstance(this).insertTable(table);
+        }*/
+
+        tables = DBManager.getInstance(this).queryTable(spinnerItems[0]);
+
+        if(tables.size() == 0) {
+            for (int i = 0; i < 10; i++) {
+                //"西红柿","9839283923","4人",892,992,845,getString(R.string.idle),12345,"88:55","张三",spinnerItems[0],i+1+""
+                table = new Table();
+                table.setAmount1(892);
+                table.setAmount2(992);
+                table.setAmount3(845);
+                table.setTimeOld("88:55");
+                table.setStatue(getString(R.string.idle));
+                if (i>4) {
+                    table.setFloorName(spinnerItems[1]);
+                }else {
+                    table.setFloorName(spinnerItems[0]);
+                }
+                table.setName("西红柿");
+                table.setPersionNo("4");
+                table.setTableNum(i+1+"");
+                tables.add(table);
+                DBManager.getInstance(this).insertTable(table);
+            }
+
         }
 
-        homeDataAdapter = new HomeDataAdapter(tables,this);
+        floor = spinnerItems[0];
+        homeDataAdapter = new HomeDataAdapter(this,spinnerItems[0]);
         homeDataAdapter.setListener(this);
         GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 4);
         tabList.addItemDecoration(new SpaceItemDecoration(30, SpaceItemDecoration.GRIDLAYOUT));
@@ -147,9 +200,9 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
                 tvHomeStartPreorder.setTextColor(getResources().getColor(R.color.text_yellow));
                 tvHomeStartPreorder.setBackgroundResource(R.drawable.bg_home_text_bottom_select);
 
-                Intent intent = new Intent();
-                intent.setClass(this,PreOrderActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(this,PreOrderActivity.class);
+//                startActivity(intent);
 
                 break;
 
@@ -269,10 +322,25 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
     }
 
     @Override
-    public void onItemClick(int position) {
-        if (tables != null) {
-            OrderInfoDialog orderInfoDialog = new OrderInfoDialog(this, tables.get(position).getOrderNumber());
-            orderInfoDialog.show();
+    public void onItemClick(Table table) {
+        if (table != null) {
+            if (table.getStatue().equals(getString(R.string.idle))){
+                Intent intent = new Intent(this,PreOrderActivity.class);
+                intent.putExtra("table",table);
+                startActivityForResult(intent,0x123);
+            }else {
+                OrderInfoDialog orderInfoDialog = new OrderInfoDialog(this, table.getOrderNumber());
+                orderInfoDialog.show();
+            }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 0x123 && resultCode==RESULT_OK){
+            List<Table> tables = DBManager.getInstance(this).queryTable(floor);
+            homeDataAdapter.setData(tables);
+        }
+
     }
 }

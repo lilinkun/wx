@@ -34,17 +34,20 @@ public class HomeClockInDialog extends Dialog {
     }
 
 
-    @OnClick({R.id.ll_remarks_back,R.id.tv_back})
+    @OnClick({R.id.ll_remarks_back,R.id.tv_back,R.id.tv_rest,R.id.tv_call_a_day})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_back:
 
             case R.id.ll_remarks_back:
 
+            case R.id.tv_rest:
+
+            case R.id.tv_call_a_day:
+
                 dismiss();
 
                 break;
-
 
 
         }

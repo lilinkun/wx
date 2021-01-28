@@ -72,6 +72,17 @@
                 android:textSize="14sp"
                 />
 
+            <TextView
+                android:id="@+id/tv_order_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|right"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="asdadsa"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                />
+
             <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -145,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/total"
-                        android:textColor="#4B4B41"
+                        android:textColor="@color/text_gray"
                         android:textSize="14sp"
                         />
 
@@ -153,7 +164,7 @@
                         android:id="@+id/tv_preorder_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#4B4B41"
+                        android:textColor="@color/text_gray"
                         android:text="0"
                         android:textSize="14sp"
                         />
@@ -162,7 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/piece_total"
-                        android:textColor="#4B4B41"
+                        android:textColor="@color/text_gray"
                         android:textSize="14sp"
                         />
 
@@ -170,7 +181,7 @@
                         android:id="@+id/tv_goods_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#4B4B41"
+                        android:textColor="@color/text_gray"
                         android:text="0"
                         android:textSize="14sp"
                         />
@@ -178,7 +189,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#4B4B41"
+                        android:textColor="@color/text_gray"
                         android:text="@string/goods_tip"
                         android:textSize="14sp"
                         />

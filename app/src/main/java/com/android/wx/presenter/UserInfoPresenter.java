@@ -2,6 +2,7 @@ package com.android.wx.presenter;
 
 import android.content.Context;
 
+import com.android.wx.base.MyApplication;
 import com.android.wx.db.DBManager;
 import com.android.wx.event.EventCenter;
 import com.android.wx.model.UserInfo;
@@ -22,7 +23,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoView> {
 
     public void install(Context context) {
         UserInfo userInfo = new UserInfo();
-        userInfo.setName("admin");
+        userInfo.setName("劳先生");
         userInfo.setPermission(1);
         userInfo.setPwd(123456);
 
@@ -34,6 +35,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoView> {
 //        List<UserInfo> list = mDaoSession.getUserInfoDao().queryBuilder().list();
         List<UserInfo> list = DBManager.getInstance(context).queryUserInfo(pwd);
         if (list.size() > 0) {
+            MyApplication.userInfo = list.get(0);
             getView().onLoginSucceed(list.get(0).getId());
         }else {
             getView().onLoginFailed();

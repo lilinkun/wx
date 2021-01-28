@@ -46,11 +46,12 @@
         android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_rest"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:text="@string/rest"
         android:gravity="center"
-        android:textColor="#ff666666"
+        android:textColor="@color/text_bottom_666"
         android:textSize="24sp"
         android:paddingTop="@dimen/dp_10"
         android:paddingBottom="@dimen/dp_10"
@@ -58,11 +59,12 @@
         />
 
     <TextView
+        android:id="@+id/tv_call_a_day"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:text="@string/call_a_day"
         android:gravity="center"
-        android:textColor="#ff666666"
+        android:textColor="@color/text_bottom_666"
         android:textSize="24sp"
         android:paddingTop="@dimen/dp_10"
         android:paddingBottom="@dimen/dp_10"
@@ -76,7 +78,7 @@
         android:layout_height="wrap_content"
         android:text="@string/back"
         android:gravity="center"
-        android:textColor="#ff666666"
+        android:textColor="@color/text_bottom_666"
         android:textSize="24sp"
         android:paddingTop="@dimen/dp_10"
         android:paddingBottom="@dimen/dp_10"

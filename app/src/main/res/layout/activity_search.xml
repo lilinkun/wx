@@ -49,10 +49,63 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        >
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_time"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_status"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_style"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_mode"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_price"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_local"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_delivery"
+            />
+
+        <TextView
+            style="@style/tv_search"
+            android:text="@string/search_order_person"
+            />
+
+    </LinearLayout>
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp_10"
         />
 
 </LinearLayout>

@@ -40,6 +40,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.ReportActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.GiftActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

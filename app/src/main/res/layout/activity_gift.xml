@@ -1,47 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0EDED"
-    android:orientation="vertical"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    android:orientation="vertical">
 
     <include layout="@layout/layout_login_top"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:padding="20dp"
         >
-
         <LinearLayout
-            android:id="@+id/ll_add_vip_left"
+            android:id="@+id/ll_search_gift"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.6"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:background="@drawable/bg_home_get"
-            >
-
-            <include layout="@layout/layout_add_vip_main_card"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_search_vip"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.6"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:visibility="gone"
             android:background="@drawable/bg_home_get"
             >
             <TextView
@@ -59,33 +37,29 @@
                 android:layout_height="match_parent"
                 >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_vip"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="20dp"
-                />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_gift"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"
+                    />
 
-            <TextView
-                android:id="@+id/tv_add_new_vip_card"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
-                style="@style/vip_btn_bg"
-                android:textColor="@color/text_yellow_00"
-                android:background="@drawable/bg_home_text_bottom_select"
-                android:text="@string/add_new_card"
-                />
+                <TextView
+                    android:id="@+id/tv_add_new_vip_card"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    style="@style/vip_btn_bg"
+                    android:textColor="@color/text_yellow_00"
+                    android:background="@drawable/bg_home_text_bottom_select"
+                    android:text="@string/add_new_card"
+                    />
 
 
             </RelativeLayout>
 
-
-            <include layout="@layout/layout_vip_see_card"/>
-
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="0dp"
@@ -96,11 +70,10 @@
             android:gravity="center_horizontal"
             android:background="@drawable/bg_home_get"
             >
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/vip_card"
+                android:text="@string/gift_card"
                 android:textColor="@color/text_yellow_00"
                 android:textSize="20sp"
                 android:layout_marginTop="24dp"
@@ -268,18 +241,7 @@
 
 
             </RelativeLayout>
-
         </LinearLayout>
 
-
     </LinearLayout>
-    </LinearLayout>
-
-
-    <com.android.wx.weight.MyDateLinear
-        android:id="@+id/mydate"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone"></com.android.wx.weight.MyDateLinear>
-</RelativeLayout>
+</LinearLayout>

@@ -21,4 +21,9 @@
 
     <color name="title_color">#2d2d04</color>
 
+    <color name="text_gray">#4B4B41</color>
+
+    <color name="bg_toolbar_title">#43a6de</color>
+
+    <color name="black_text_bg">#282828</color>
 </resources>

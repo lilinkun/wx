@@ -4,27 +4,35 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.wx.R;
+import com.android.wx.db.DBManager;
 import com.android.wx.model.Table;
+import com.android.wx.utils.TimeUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHolder> implements View.OnClickListener {
 
-    private ArrayList<Table> tableDaos;
+    private List<Table> tables;
     private Context context;
     //type 0:全部展示 1:价格 2：时长 3：单号 4：时间 5：人数 6：状态 7：前台  8：顾客姓名
     private int type = 1;
     private OnHomeDataClickListener onHomeDataClickListener;
+    private String floor;
 
-    public HomeDataAdapter(ArrayList<Table> tableDaos, Context context){
-        this.tableDaos = tableDaos;
+    public HomeDataAdapter(Context context,String floor){
         this.context = context;
+        this.floor = floor;
+        this.tables = DBManager.getInstance(context).queryTable(floor);
     }
 
     public void setType(int type){
@@ -32,11 +40,30 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
         notifyDataSetChanged();
     }
 
+    public void setData(List<Table> tables){
+        this.tables = tables;
+        notifyDataSetChanged();
+    }
+
+    public void setFloor(String floor){
+        this.tables = DBManager.getInstance(context).queryTable(floor);
+        notifyDataSetChanged();
+    }
+
+    /*public void setTables(List<Table> allTables,String floor){
+        this.tables = new ArrayList<>();
+        for (int i = 0;i<allTables.size();i++){
+            if (allTables.get(i).getFloorName().equals(floor)){
+                this.tables.add(allTables.get(i));
+            }
+        }
+    }*/
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.item_table, null);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_table,parent, false);
 
         ViewHolder viewHolder = new ViewHolder(v);
 
@@ -50,46 +77,69 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
 
         holder.itemView.setTag(position);
 
-        holder.mPrice1.setText(tableDaos.get(position).getAmount1()+"");
-        holder.mPrice2.setText(tableDaos.get(position).getAmount2()+"");
-        holder.mPrice3.setText(tableDaos.get(position).getAmount3()+"");
-        holder.mTableName.setText(tableDaos.get(position).getName());
-        holder.mTablenNumber.setText(tableDaos.get(position).getOrderNumber());
-        holder.mTablePerNo.setText(tableDaos.get(position).getPersionNo()+"");
-
-        if (type == 1){
-            holder.mTableStatus.setText(tableDaos.get(position).getTotalAmountPrice()+"");
-        }else if (type == 2){
-            holder.mTableStatus.setText(tableDaos.get(position).getTimeOld()+"");
-        }else if (type == 3){
-            holder.mTableStatus.setText(tableDaos.get(position).getOrderNumber()+"");
-        }else if (type == 4){
-            holder.mTableStatus.setText(tableDaos.get(position).getTimeOld()+"");
-        }else if (type == 5){
-            holder.mTableStatus.setText(tableDaos.get(position).getPersionNo()+"");
-        }else if (type == 6){
-            holder.mTableStatus.setText(tableDaos.get(position).getStatue()+"");
-        }else if (type == 7){
-            holder.mTableStatus.setText(tableDaos.get(position).getStatue()+"");
-        }else if (type == 8){
-            holder.mTableStatus.setText(tableDaos.get(position).getCustomerName()+"");
-        }else if (type == 9){
+        if (tables.get(position).getStatue().equals(context.getString(R.string.idle))){
+            holder.rlDiningTop.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_dining_hall_red));
+            holder.mTvUnprice.setVisibility(View.VISIBLE);
+            holder.rlPrice.setVisibility(View.INVISIBLE);
+            holder.mTableStatus.setText(tables.get(position).getStatue()+"");
             holder.mTablePerNo.setVisibility(View.INVISIBLE);
-            holder.mPrice1.setText("****");
-            holder.mPrice2.setText("****");
-            holder.mPrice3.setText("****");
-        }else if (type == 10){
-            holder.mTablePerNo.setVisibility(View.VISIBLE);
-            holder.mPrice1.setText(tableDaos.get(position).getAmount1()+"");
-            holder.mPrice2.setText(tableDaos.get(position).getAmount2()+"");
-            holder.mPrice3.setText(tableDaos.get(position).getAmount3()+"");
+            holder.mTableStatus.setTextColor(context.getResources().getColor(R.color.gray_line_99));
+        }else {
+            holder.rlDiningTop.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_dining_hall));
+            holder.mTvUnprice.setVisibility(View.GONE);
+            holder.rlPrice.setVisibility(View.VISIBLE);
+
+
+            holder.mPrice1.setText(tables.get(position).getAmount1()+"");
+            holder.mPrice2.setText(tables.get(position).getAmount2()+"");
+            holder.mPrice3.setText(tables.get(position).getAmount3()+"");
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+            if (type == 1){
+                holder.mTableStatus.setText(tables.get(position).getTotalAmountPrice()+"");
+            }else if (type == 2){
+                long timeNow = (new Date()).getTime() - tables.get(position).getTime();
+                holder.mTableStatus.setText(TimeUtil.timeToDate(timeNow) +"");
+            }else if (type == 3){
+                holder.mTableStatus.setText(tables.get(position).getOrderNumber()+"");
+            }else if (type == 4){
+                long timeOld = tables.get(position).getTime();
+                holder.mTableStatus.setText(simpleDateFormat.format(timeOld)+"");
+                holder.mTableStatus.setTextColor(context.getResources().getColor(R.color.title_color));
+            }else if (type == 5){
+                holder.mTableStatus.setText(tables.get(position).getPersionNo()+"");
+            }else if (type == 6){
+                holder.mTableStatus.setText(tables.get(position).getStatue()+"");
+            }else if (type == 7){
+                holder.mTableStatus.setText(tables.get(position).getStatue()+"");
+            }else if (type == 8){
+                holder.mTableStatus.setText(tables.get(position).getCustomerName()+"");
+            }else if (type == 9){
+                holder.mTablePerNo.setVisibility(View.INVISIBLE);
+                holder.mPrice1.setText("****");
+                holder.mPrice2.setText("****");
+                holder.mPrice3.setText("****");
+            }else if (type == 10){
+                holder.mTablePerNo.setVisibility(View.VISIBLE);
+                holder.mPrice1.setText(tables.get(position).getAmount1()+"");
+                holder.mPrice2.setText(tables.get(position).getAmount2()+"");
+                holder.mPrice3.setText(tables.get(position).getAmount3()+"");
+            }
+
         }
+
+        holder.mTableName.setText(tables.get(position).getName());
+        holder.mTablenNumber.setText("("+tables.get(position).getTableNum() + "号桌)");
+        holder.mTablePerNo.setText(tables.get(position).getPersionNo()+"人");
+
+
+
 
     }
 
     @Override
     public int getItemCount() {
-        return tableDaos.size();
+        return tables.size();
     }
 
     @Override
@@ -97,10 +147,16 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
         return position;
     }
 
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @Override
     public void onClick(View view) {
         if (onHomeDataClickListener != null){
-            onHomeDataClickListener.onItemClick((Integer) view.getTag());
+            onHomeDataClickListener.onItemClick(tables.get((Integer) view.getTag()));
         }
     }
 
@@ -109,7 +165,7 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
     }
 
     public interface OnHomeDataClickListener{
-        public void onItemClick(int position);
+        public void onItemClick(Table table);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -121,6 +177,9 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
         TextView mPrice3;
         TextView mTableStatus;
         TextView mTablePerNo;
+        TextView mTvUnprice;
+        RelativeLayout rlDiningTop;
+        RelativeLayout rlPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -131,6 +190,9 @@ public class HomeDataAdapter extends RecyclerView.Adapter<HomeDataAdapter.ViewHo
             mPrice3 = (TextView) itemView.findViewById(R.id.item_table_amount3);
             mTableStatus = (TextView) itemView.findViewById(R.id.item_table_status);
             mTablePerNo = (TextView) itemView.findViewById(R.id.item_table_persion);
+            rlDiningTop = (RelativeLayout) itemView.findViewById(R.id.rl_dining_top);
+            rlPrice = (RelativeLayout) itemView.findViewById(R.id.rl_price);
+            mTvUnprice = (TextView) itemView.findViewById(R.id.tv_unprice);
         }
     }
 

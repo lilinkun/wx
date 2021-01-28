@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.android.wx.model.UserInfo;
 
 /**
  * Created by kai
@@ -35,4 +36,7 @@ public class MyApplication extends Application {
 //        //包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
 //        SDKInitializer.setCoordType(CoordType.BD09LL);
     }
+
+    public static UserInfo userInfo;
+
 }

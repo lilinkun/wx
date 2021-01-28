@@ -64,7 +64,7 @@ public class HomeActivity extends MvpActivity<IHomeView, HomePerenter>  {
         homeClockInDialog.show();
     }
 
-    @OnClick({R.id.btn_home_halleat,R.id.rl_home_delivery,R.id.rl_home_get,R.id.rl_vip,R.id.rl_find_order})
+    @OnClick({R.id.btn_home_halleat,R.id.rl_home_delivery,R.id.rl_home_get,R.id.rl_vip,R.id.rl_find_order,R.id.rl_clock_in,R.id.rv_gift})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btn_home_halleat:
@@ -99,6 +99,19 @@ public class HomeActivity extends MvpActivity<IHomeView, HomePerenter>  {
                 Intent intent4 = new Intent(this,SearchActivity.class);
                 startActivity(intent4);
 
+                break;
+
+            case R.id.rl_clock_in:
+
+                HomeClockInDialog homeClockInDialog = new HomeClockInDialog(this);
+                homeClockInDialog.show();
+
+                break;
+
+            case R.id.rv_gift:
+
+                Intent intent5 = new Intent(this,GiftActivity.class);
+                startActivity(intent5);
 
                 break;
         }

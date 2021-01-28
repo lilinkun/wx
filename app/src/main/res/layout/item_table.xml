@@ -5,15 +5,15 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:background="@drawable/bg_gray1_hollow_rectangle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/rl_dining_top"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/title_color">
+            android:background="@drawable/bg_dining_hall">
 
             <TextView
                 android:id="@+id/item_table_name"
@@ -60,14 +60,20 @@
                 android:layout_marginTop="20dp"
                 android:background="#FFFFFF" />
 
+            <RelativeLayout
+                android:id="@+id/rl_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:layout_alignLeft="@+id/item_table_number"
+                android:layout_alignRight="@+id/item_table_persion"
+                >
+
             <com.android.wx.weight.DrawableCenterTextView
                 android:id="@+id/item_table_amount1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/line"
-                android:layout_alignLeft="@id/item_table_number"
-                android:layout_alignTop="@id/item_table_number"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
@@ -98,20 +104,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/item_table_amount1"
-                android:layout_alignRight="@id/item_table_persion"
                 android:layout_marginRight="12dp"
                 android:layout_weight="1"
                 android:drawableLeft="@mipmap/halleat_add"
+                android:layout_alignParentRight="true"
                 android:drawablePadding="8dp"
                 android:text="160"
                 android:textColor="@color/text_yellow"
                 android:textSize="16sp"/>
 
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_unprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:gravity="center"
+                android:text="暂无费用要求"
+                android:visibility="gone"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:textSize="16sp"
+                android:textColor="@color/gray_line_99"
+                />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp">
+            android:layout_height="52dp"
+            android:background="@drawable/bg_dining_hall_bottom">
 
             <TextView
                 android:id="@+id/item_table_status"
@@ -119,7 +142,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="新单"
                 android:textSize="24sp">
 
 

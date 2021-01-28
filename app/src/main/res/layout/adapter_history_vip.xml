@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        >
+
+        <TextView
+            android:id="@+id/tv_history_time"
+            style="@style/tv_dialog_history"
+            android:layout_weight="1.6"
+            />
+
+        <TextView
+            android:id="@+id/tv_history_integral"
+            style="@style/tv_dialog_history"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tv_history_balance"
+            style="@style/tv_dialog_history"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tv_adapter_balance"
+            style="@style/tv_dialog_history"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tv_operator"
+            style="@style/tv_dialog_history"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tv_history_order"
+            style="@style/tv_dialog_history"
+            android:layout_weight="1.6"
+            />
+
+
+
+    </LinearLayout>
+</LinearLayout>
