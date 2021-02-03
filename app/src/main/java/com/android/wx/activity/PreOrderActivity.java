@@ -78,6 +78,8 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     TextView tvPreOrderTableNum;
     @BindView(R.id.tv_orderer)
     TextView tvOrderer;
+    @BindView(R.id.tv_order_type)
+    TextView tvOrderType;
 
     private MenuFragment menuFragment;
     private MenuOrderAdapter menuOrderAdapter;
@@ -85,6 +87,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     private PreOrderNumberDialog preOrderNumberDialog;
     private MenuInfo clickFoodMenu;
     private Table table;
+    private String type;
     private int num;
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd yyyy");
@@ -110,14 +113,22 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     @Override
     public void initData() {
 
-        table = (Table)getIntent().getSerializableExtra("table");
+        type = getIntent().getStringExtra("type");
 
         MenuTypeBean menuTypeBean = new MenuTypeBean();
         menuTypeBean.setMenuType(getString(R.string.tv_menu_type1));
         menuTypeBean.setMenuTypeId("1231");
         DBManager.getInstance(this).insertMenuTypeBean(menuTypeBean);
 
-        tvPreOrderTableNum.setText(table.getTableNum() + getString(R.string.table));
+        if (type.equals("table")){
+            table = (Table)getIntent().getSerializableExtra("table");
+            tvPreOrderTableNum.setText(table.getTableNum() + getString(R.string.table));
+        }else if (type.equals("get")){
+            tvOrderType.setText(R.string.home_get);
+        }else if (type.equals("delivery")){
+            tvOrderType.setText(R.string.delivery);
+        }
+
 
         if (MyApplication.userInfo != null){
             tvOrderer.setText(MyApplication.userInfo.getName());
@@ -234,7 +245,7 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     }
 
     @OnClick({R.id.tv_pre_order_plus,R.id.tv_pre_order_reduce,R.id.tv_pre_order_num,R.id.tv_pre_order_change_price,R.id.tv_preorder_exit,R.id.tv_preorder_delete,R.id.tv_preorder_go_kitchen,R.id.tv_preorder_save
-            ,R.id.tv_customer_num,R.id.tv_pre_order_report})
+            ,R.id.tv_customer_num,R.id.tv_pre_order_report,R.id.tv_change_table})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_pre_order_plus:
@@ -323,14 +334,17 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
 
                     }
 
-                    table.setStatue(getString(R.string.preorder_go_kitchen));
                     long timeStr = (new Date()).getTime();
-                    table.setTime(timeStr);
+                    if (table != null) {
+                        table.setStatue(getString(R.string.preorder_go_kitchen));
+                        table.setTime(timeStr);
 //                    table.setTimeOld();
-                    table.setOrderNumber(tvOrderId.getText().toString());
-                    table.setTotalAmountPrice(Double.valueOf(tvPreorderTotalPrice.getText().toString()));
-                    table.setPersionNo(num+"");
-                    DBManager.getInstance(this).updateTable(table);
+                        table.setOrderNumber(tvOrderId.getText().toString());
+                        table.setTotalAmountPrice(Double.valueOf(tvPreorderTotalPrice.getText().toString()));
+                        table.setPersionNo(num + "");
+                        DBManager.getInstance(this).updateTable(table);
+
+                    }
 
                     OrderInfoBean orderInfoBean = new OrderInfoBean(tvOrderId.getText().toString(),String.valueOf(timeStr),
                             Integer.valueOf(tvPreorderTotal.getText().toString()),Integer.valueOf(tvGoodsNum.getText().toString()),Double.valueOf(tvPreorderTotalPrice.getText().toString()));
@@ -362,6 +376,14 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
                 Intent intent = new Intent(this,ReportActivity.class);
                 startActivity(intent);
 
+
+                break;
+
+            case R.id.tv_change_table:
+
+                Intent intent1 = new Intent(this,ChangeTableActivity.class);
+                intent1.putExtra("table",table);
+                startActivity(intent1);
 
                 break;
         }

@@ -44,6 +44,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.GiftActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.ChangeTableActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

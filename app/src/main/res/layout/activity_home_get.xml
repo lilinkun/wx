@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0EDED"
+    android:background="@color/bg_light_red"
     android:orientation="vertical">
 
     <include layout="@layout/layout_login_top"/>
@@ -114,6 +114,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_input_get_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -141,7 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/delivery"
+                android:text="@string/home_get"
                 android:textColor="#ff111111"
                 android:textSize="20sp"
                 android:layout_marginTop="24dp"
@@ -163,6 +164,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/et_get_input_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_10"
@@ -190,6 +192,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/et_get_input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_10"
@@ -221,6 +224,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/et_get_remarks"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
                     android:layout_marginLeft="@dimen/dp_10"
@@ -261,6 +265,7 @@
 
 
                     <TextView
+                        android:id="@+id/tv_home_get_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"

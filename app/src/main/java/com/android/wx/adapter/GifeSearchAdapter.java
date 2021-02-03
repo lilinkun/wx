@@ -36,7 +36,7 @@ public class GifeSearchAdapter extends RecyclerView.Adapter<GifeSearchAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_vip,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_gift,parent,false);
 
         ViewHolder viewHolder = new ViewHolder(view);
 
@@ -50,6 +50,9 @@ public class GifeSearchAdapter extends RecyclerView.Adapter<GifeSearchAdapter.Vi
 
         holder.itemView.setTag(position);
 
+        holder.tvVipCard.setText("卡号  14589635248");
+        holder.tvVipUserName.setText("姓名  劳先生");
+        holder.tvVipBalance.setText("余额  4567.00");
 
     }
 

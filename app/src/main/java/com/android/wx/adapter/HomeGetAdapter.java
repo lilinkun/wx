@@ -46,14 +46,18 @@ public class HomeGetAdapter extends RecyclerView.Adapter<HomeGetAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.tvGetOrderId.setText(menuInfos.get(position).getOrderNumber());
+        holder.tvGetOrderId.setText("9839283923");
+        holder.tvGetTableId.setText("2a桌 3人");
+        holder.tvGetTime.setText("22:22:22");
+        holder.tvGetPrice.setText("$222");
+        holder.tvGetGoOrder.setText("劳先生");
 
 
     }
 
     @Override
     public int getItemCount() {
-        return menuInfos.size();
+        return 8;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

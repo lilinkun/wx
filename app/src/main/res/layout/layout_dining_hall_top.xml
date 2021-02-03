@@ -20,6 +20,7 @@
 
 
         <com.android.wx.weight.DrawableCenterTextView
+            android:id="@+id/tv_hall_search_order"
             android:drawableLeft="@mipmap/all_change_order"
             android:layout_weight="1"
             style="@style/txt_hollow"
@@ -59,11 +60,11 @@
         <com.android.wx.weight.DrawableCenterTextView
             android:layout_weight="1"
             android:drawableLeft="@mipmap/all_wait"
-
             style="@style/txt_hollow"
             android:text="@string/home_wait"/>
 
         <com.android.wx.weight.DrawableCenterTextView
+            android:id="@+id/tv_hall_home_get"
             android:layout_weight="1"
             style="@style/txt_hollow"
             android:drawableLeft="@mipmap/all_get"
@@ -71,8 +72,8 @@
             android:text="@string/home_get"/>
 
         <com.android.wx.weight.DrawableCenterTextView
+            android:id="@+id/tv_hall_delivery"
             android:drawableLeft="@mipmap/all_take_out"
-
             android:layout_marginRight="12dp"
             android:layout_weight="1"
             style="@style/txt_hollow"

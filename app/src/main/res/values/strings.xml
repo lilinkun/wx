@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wx</string>
+    <string name="app_name">点餐</string>
     <string name="action_settings">Settings</string>
     <string name="str_login_failed">登录失败</string>
     <string name="str_login_succeed">登录成功</string>
@@ -154,6 +154,7 @@
     <string name="rest">休息</string>
     <string name="call_a_day">收工</string>
     <string name="change_table">换桌</string>
+    <string name="order_type">新单 </string>
     <string name="unsave">未保存</string>
     <string name="idle">空闲</string>
     <string name="pleasr_choose_food">请选择菜肴</string>
@@ -182,11 +183,105 @@
     <string name="vip_exist">这个会员已经存在</string>
     <string name="vip_unexist">此会员不存在</string>
 
+    <string name="get_incomplete">请完整填写信息</string>
+
     <string name="search_vip">查看会员卡</string>
+    <string name="search_gift">查看礼品卡</string>
     <string name="add_new_card">添加新卡</string>
     <string name="vip_copy">打印</string>
     <string name="recharge">充值</string>
     <string name="operator">操作者</string>
+    <string name="change_no_table">不能换到同一桌</string>
+
+    <string name="setting_json">[{
+		"subData": [{
+			"name": "餐厅信息"
+		}, {
+			"name": "员工管理"
+		}, {
+			"name": "桌子"
+		}, {
+			"name": "外送区域"
+		}, {
+			"name": "图片库"
+		}, {
+			"name": "分析"
+		}],
+		"title": "餐厅管理"
+	},
+	{
+		"subData": [{
+			"name": "菜单编辑"
+		}, {
+			"name": "调味指示"
+		}, {
+			"name": "菜品单位"
+		}, {
+			"name": "菜序名"
+		}, {
+			"name": "促销策略"
+		}, {
+			"name": "按时计费"
+		}, {
+			"name": "订单类型"
+		}],
+		"title": "菜品管理"
+	},
+	{
+		"subData": [{
+			"name": "物品"
+		}, {
+			"name": "渠道"
+		}, {
+			"name": "管理"
+		}],
+		"title": "库存管理"
+	},
+	{
+		"subData": [{
+			"name": "税费"
+		}, {
+			"name": "折扣"
+		}, {
+			"name": "加收"
+		}, {
+			"name": "付费类型"
+		}, {
+			"name": "收银机"
+		}],
+		"title": "价格与付费"
+	},
+	{
+		"subData": [{
+			"name": "税费"
+		}, {
+			"name": "折扣"
+		}, {
+			"name": "加收"
+		}, {
+			"name": "付费类型"
+		}, {
+			"name": "收银机"
+		}],
+		"title": "顾客管理"
+	},
+	{
+		"subData": [{
+			"name": "打印机设备"
+		}, {
+			"name": "打印设备"
+		}, {
+			"name": "整合功能应用"
+		}, {
+			"name": "客屏显"
+		}, {
+			"name": "远程协助"
+		}, {
+			"name": "设置"
+		}],
+		"title": "系统设置"
+	}
+]</string>
 
     <array name="more_array">
         <item>礼品卡</item>

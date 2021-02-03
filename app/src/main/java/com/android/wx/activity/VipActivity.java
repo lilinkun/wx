@@ -175,7 +175,7 @@ public class VipActivity extends MvpActivity<IVipView,VipPresenter> implements M
                 1);
     }
 
-    @OnClick({R.id.tv_add_vip,R.id.tv_register_effective_date,R.id.tv_vip_save,R.id.tv_search,R.id.tv_add_new_vip_card,R.id.tv_see_history,R.id.tv_back,R.id.tv_exit,
+    @OnClick({R.id.tv_add_vip,R.id.tv_register_effective_date,R.id.tv_vip_save,R.id.tv_search,R.id.tv_add_new_vip_card,R.id.tv_see_history,R.id.tv_vip_back,R.id.tv_exit,
             R.id.tv_customer_info,R.id.tv_see_recharge})
     public void onClick(View view){
         switch (view.getId()){
@@ -315,7 +315,7 @@ public class VipActivity extends MvpActivity<IVipView,VipPresenter> implements M
 
                 break;
 
-            case R.id.tv_back:
+            case R.id.tv_vip_back:
 
                 finish();
 

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0EDED"
+    android:background="@color/bg_light_red"
     android:orientation="vertical"
     >
 
@@ -244,7 +244,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/tv_back"
+                        android:id="@+id/tv_vip_back"
                         style="@style/vip_btn_bg"
                         android:text="@string/back_home"
                         android:background="@drawable/bg_adapter_choose_num"

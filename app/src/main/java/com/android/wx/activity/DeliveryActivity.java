@@ -1,5 +1,6 @@
 package com.android.wx.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import java.util.Date;
 
 import androidx.annotation.NonNull;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @ClassName DeliveryActivity
@@ -62,5 +64,25 @@ public class DeliveryActivity extends MvpActivity<IDeliveryView, DeliveryPresent
         tvLoginDate.setText(simpleDateFormat.format(date));
         tvLoginTime.setText(simpleDateFormat1.format(date));
     }
+
+    @OnClick({R.id.tv_delivery_back,R.id.tv_delivery_order})
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.tv_delivery_back:
+
+                finish();
+
+                break;
+
+            case R.id.tv_delivery_order:
+
+                Intent intent = new Intent(this,PreOrderActivity.class);
+                intent.putExtra("type","delivery");
+                startActivity(intent);
+
+                break;
+        }
+    }
+
 
 }

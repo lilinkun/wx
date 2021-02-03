@@ -33,4 +33,10 @@ public abstract class BaseFragment extends Fragment {
     public abstract int getlayoutId();
 
     public abstract void initEventAndData();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+    }
 }

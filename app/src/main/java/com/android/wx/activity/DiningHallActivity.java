@@ -190,7 +190,8 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
 
     }
 
-    @OnClick({R.id.tv_home_start_preorder,R.id.tv_home_status,R.id.tv_more,R.id.tv_home_price,R.id.tv_home_time_old,R.id.tv_home_id,R.id.tv_home_time,R.id.tv_home_number,R.id.tv_home_customer_name})
+    @OnClick({R.id.tv_home_start_preorder,R.id.tv_home_status,R.id.tv_more,R.id.tv_home_price,R.id.tv_home_time_old,R.id.tv_home_id,R.id.tv_home_time,
+            R.id.tv_home_number,R.id.tv_home_customer_name,R.id.tv_hall_search_order,R.id.tv_hall_home_get,R.id.tv_hall_delivery})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_home_start_preorder:
@@ -215,6 +216,17 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String name = spinnerItems1[i];
+
+                        if (i == 0){
+
+                            Intent intent5 = new Intent(DiningHallActivity.this,GiftActivity.class);
+                            startActivity(intent5);
+                        }else if(i == 1) {
+
+                            Intent intent3 = new Intent(DiningHallActivity.this,VipActivity.class);
+                            startActivity(intent3);
+                        }
+
                         Log.i(TAG,name);
                     }
                 }).show();
@@ -290,7 +302,26 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
 
                 break;
 
+            case R.id.tv_hall_search_order:
 
+                Intent intent = new Intent(this,SearchActivity.class);
+                startActivity(intent);
+
+                break;
+
+            case R.id.tv_hall_home_get:
+
+                Intent intent2 = new Intent(this,HomeGetActivity.class);
+                startActivity(intent2);
+
+                break;
+
+            case R.id.tv_hall_delivery:
+
+                Intent intent1 = new Intent(this,DeliveryActivity.class);
+                startActivity(intent1);
+
+                break;
         }
     }
 
@@ -326,6 +357,7 @@ public class DiningHallActivity extends MvpActivity<IDiningHallView, DiningHallP
         if (table != null) {
             if (table.getStatue().equals(getString(R.string.idle))){
                 Intent intent = new Intent(this,PreOrderActivity.class);
+                intent.putExtra("type","table");
                 intent.putExtra("table",table);
                 startActivityForResult(intent,0x123);
             }else {

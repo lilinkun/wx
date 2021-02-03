@@ -88,6 +88,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_change_table"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/order_change_table"
@@ -209,7 +210,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="类型: 新单 "
+                                android:text="类型: "
+                                android:textColor="@color/text_gray"
+                                android:textSize="14sp"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_order_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/order_type"
                                 android:textColor="@color/text_gray"
                                 android:textSize="14sp"
                                 />

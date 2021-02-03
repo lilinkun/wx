@@ -26,4 +26,8 @@
     <color name="bg_toolbar_title">#43a6de</color>
 
     <color name="black_text_bg">#282828</color>
+
+    <color name="setting_black">#111100</color>
+
+    <color name="bg_light_red">#F0EDED</color>
 </resources>

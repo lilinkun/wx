@@ -1,6 +1,7 @@
 package com.android.wx.activity;
 
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.wx.R;
 import com.android.wx.adapter.GifeSearchAdapter;
@@ -9,6 +10,9 @@ import com.android.wx.contract.IGiftView;
 import com.android.wx.event.EventCenter;
 import com.android.wx.presenter.GiftPresenter;
 import com.android.wx.weight.SpaceItemDecoration;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -26,6 +30,10 @@ public class GiftActivity extends MvpActivity<IGiftView, GiftPresenter> {
 
     @BindView(R.id.rv_gift)
     RecyclerView rvGift;
+    @BindView(R.id.tv_login_time)
+    TextView tvLoginTime;
+    @BindView(R.id.tv_login_date)
+    TextView tvLoginDate;
 
     @NonNull
     @Override
@@ -51,6 +59,12 @@ public class GiftActivity extends MvpActivity<IGiftView, GiftPresenter> {
     @Override
     public void initData() {
 
+
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd yyyy");
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
+        tvLoginDate.setText(simpleDateFormat.format(date));
+        tvLoginTime.setText(simpleDateFormat1.format(date));
         GifeSearchAdapter gifeSearchAdapter = new GifeSearchAdapter(this,null);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
