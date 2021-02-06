@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@drawable/bg_adapter_choose_num"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="营业时间"
+                android:textSize="16sp"
+                android:textColor="@color/text_yellow_00"
+                android:layout_centerInParent="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_adapter_choose_num_sure"
+                android:text="新建"
+                android:textColor="@color/text_yellow_00"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_10"
+                />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="名称"
+                android:gravity="center"
+                android:textColor="@color/title_color"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="时段"
+                android:gravity="center"
+                android:textColor="@color/title_color"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="星期"
+                android:gravity="center"
+                android:textColor="@color/title_color"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="操作"
+                android:gravity="center"
+                android:textColor="@color/title_color"
+                android:textSize="13sp"
+                />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_business_hours"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:layout_marginRight="@dimen/dp_10"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="名称"
+                android:gravity="center|right"
+                android:textColor="@color/title_color"
+                android:textSize="14sp"
+                />
+
+            <EditText
+                android:id="@+id/et_business_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_color"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:padding="@dimen/dp_10"
+                android:background="@drawable/bg_adapter_choose_num"
+                android:hint="请输入名称"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="起始时间"
+                    android:gravity="center|right"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_business_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/title_color"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:padding="@dimen/dp_10"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_adapter_choose_num"
+                    android:hint="请输入起始时间"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="结束时间"
+                    android:gravity="center|right"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_business_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:padding="@dimen/dp_10"
+                    android:background="@drawable/bg_adapter_choose_num"
+                    android:hint="请输入结束时间"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="起始星期"
+                    android:gravity="center|right"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_business_start_week"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/title_color"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textSize="14sp"
+                    android:padding="@dimen/dp_10"
+                    android:background="@drawable/bg_adapter_choose_num"
+                    android:hint="请选择星期"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="结束星期"
+                    android:gravity="center|right"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_business_end_week"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/title_color"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:padding="@dimen/dp_10"
+                    android:background="@drawable/bg_adapter_choose_num"
+                    android:hint="请选择星期"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/remarks"
+                android:gravity="right"
+                android:textColor="@color/title_color"
+                android:textSize="14sp"
+                />
+
+            <EditText
+                android:id="@+id/et_business_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:textColor="@color/title_color"
+                android:textSize="14sp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:padding="@dimen/dp_10"
+                android:background="@drawable/bg_adapter_choose_num"
+                android:hint="@string/please_input_remarks_info"
+                />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/tv_business_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_adapter_choose_num_sure"
+                android:text="@string/preorder_save"
+                android:textColor="@color/text_yellow_00"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_10"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

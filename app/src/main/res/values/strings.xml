@@ -193,91 +193,165 @@
     <string name="operator">操作者</string>
     <string name="change_no_table">不能换到同一桌</string>
 
+    <array name="week_day">
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+        <item>周日</item>
+    </array>
+
     <string name="setting_json">[{
 		"subData": [{
-			"name": "餐厅信息"
+			"name": "餐厅信息",
+			"id": 1,
+			"iconfont": "1"
 		}, {
-			"name": "员工管理"
+			"name": "员工管理",
+			"id": 2,
+			"iconfont": "1"
 		}, {
-			"name": "桌子"
+			"name": "桌子",
+			"id": 3,
+			"iconfont": "1"
 		}, {
-			"name": "外送区域"
+			"name": "外送区域",
+			"id": 4,
+			"iconfont": "1"
 		}, {
-			"name": "图片库"
+			"name": "图片库",
+			"id": 5,
+			"iconfont": "1"
 		}, {
-			"name": "分析"
+			"name": "分析",
+			"id": 6,
+			"iconfont": "1"
 		}],
 		"title": "餐厅管理"
 	},
 	{
 		"subData": [{
-			"name": "菜单编辑"
+			"name": "菜单编辑",
+			"id": 7,
+			"iconfont": "1"
 		}, {
-			"name": "调味指示"
+			"name": "调味指示",
+			"id": 8,
+			"iconfont": "1"
 		}, {
-			"name": "菜品单位"
+			"name": "菜品单位",
+			"id": 9,
+			"iconfont": "1"
 		}, {
-			"name": "菜序名"
+			"name": "菜序名",
+			"id": 10,
+			"iconfont": "1"
 		}, {
-			"name": "促销策略"
+			"name": "促销策略",
+			"id": 11,
+			"iconfont": "1"
 		}, {
-			"name": "按时计费"
+			"name": "按时计费",
+			"id": 12,
+			"iconfont": "1"
 		}, {
-			"name": "订单类型"
+			"name": "订单类型",
+			"id": 13,
+			"iconfont": "1"
 		}],
 		"title": "菜品管理"
 	},
 	{
 		"subData": [{
-			"name": "物品"
+			"name": "物品",
+			"id": 14,
+			"iconfont": "1"
 		}, {
-			"name": "渠道"
+			"name": "渠道",
+			"id": 15,
+			"iconfont": "1"
 		}, {
-			"name": "管理"
+			"name": "管理",
+			"id": 16,
+			"iconfont": "1"
 		}],
 		"title": "库存管理"
 	},
 	{
 		"subData": [{
-			"name": "税费"
+			"name": "税费",
+			"id": 17,
+			"iconfont": "1"
 		}, {
-			"name": "折扣"
+			"name": "折扣",
+			"id": 18,
+			"iconfont": "1"
 		}, {
-			"name": "加收"
+			"name": "加收",
+			"id": 19,
+			"iconfont": "1"
 		}, {
-			"name": "付费类型"
+			"name": "付费类型",
+			"id": 20,
+			"iconfont": "1"
 		}, {
-			"name": "收银机"
+			"name": "收银机",
+			"id": 21,
+			"iconfont": "1"
 		}],
 		"title": "价格与付费"
 	},
 	{
 		"subData": [{
-			"name": "税费"
+			"name": "税费",
+			"id": 22,
+			"iconfont": "1"
 		}, {
-			"name": "折扣"
+			"name": "折扣",
+			"id": 23,
+			"iconfont": "1"
 		}, {
-			"name": "加收"
+			"name": "加收",
+			"id": 24,
+			"iconfont": "1"
 		}, {
-			"name": "付费类型"
+			"name": "付费类型",
+			"id": 25,
+			"iconfont": "1"
 		}, {
-			"name": "收银机"
+			"name": "收银机",
+			"id": 26,
+			"iconfont": "1"
 		}],
 		"title": "顾客管理"
 	},
 	{
 		"subData": [{
-			"name": "打印机设备"
+			"name": "打印机设备",
+			"id": 27,
+			"iconfont": "1"
 		}, {
-			"name": "打印设备"
+			"name": "打印设备",
+			"id": 28,
+			"iconfont": "1"
 		}, {
-			"name": "整合功能应用"
+			"name": "整合功能应用",
+			"id": 29,
+			"iconfont": "1"
 		}, {
-			"name": "客屏显"
+			"name": "客屏显",
+			"id": 30,
+			"iconfont": "1"
 		}, {
-			"name": "远程协助"
+			"name": "远程协助",
+			"id": 31,
+			"iconfont": "1"
 		}, {
-			"name": "设置"
+			"name": "设置",
+			"id": 32,
+			"iconfont": "1"
 		}],
 		"title": "系统设置"
 	}

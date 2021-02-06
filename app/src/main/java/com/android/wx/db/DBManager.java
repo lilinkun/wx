@@ -3,6 +3,8 @@ package com.android.wx.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.android.wx.model.BusinessHoursBean;
+import com.android.wx.model.BusinessHoursBeanDao;
 import com.android.wx.model.DaoMaster;
 import com.android.wx.model.DaoSession;
 import com.android.wx.model.MenuInfo;
@@ -272,5 +274,41 @@ public class DBManager {
         List<VipInfoBean> list = qb.list();
         return list;
     }
+
+
+    /**
+     * 插入营业时间
+     * @param businessHoursBean
+     */
+    public void insertBusinessHours(BusinessHoursBean businessHoursBean) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        BusinessHoursBeanDao businessHoursBeanDao = daoSession.getBusinessHoursBeanDao();
+        businessHoursBeanDao.insert(businessHoursBean);
+    }
+
+
+    /**
+     * 查询营业时间
+     */
+    public List<BusinessHoursBean> queryBusinessHours() {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        BusinessHoursBeanDao businessHoursBeanDao = daoSession.getBusinessHoursBeanDao();
+        QueryBuilder<BusinessHoursBean> qb = businessHoursBeanDao.queryBuilder();
+        List<BusinessHoursBean> list = qb.list();
+        return list;
+    }
+
+    /**
+     *删除营业时间
+     */
+    public void deleteBusinessHours(BusinessHoursBean businessHoursBean) {
+        DaoMaster daoMaster = new DaoMaster(getWritableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        BusinessHoursBeanDao businessHoursBeanDao = daoSession.getBusinessHoursBeanDao();
+        businessHoursBeanDao.delete(businessHoursBean);
+    }
+
 
 }

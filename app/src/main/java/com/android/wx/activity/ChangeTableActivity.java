@@ -15,6 +15,7 @@ import com.android.wx.event.EventCenter;
 import com.android.wx.model.Table;
 import com.android.wx.presenter.ChangeTablePresenter;
 import com.android.wx.utils.UToast;
+import com.android.wx.view.ChangeTableDialog;
 import com.android.wx.view.OrderInfoDialog;
 import com.android.wx.weight.SpaceItemDecoration;
 
@@ -67,9 +68,6 @@ public class ChangeTableActivity extends MvpActivity<IChangeTableView, ChangeTab
     @Override
     protected void onReceiverEvent(EventCenter eventCenter) {
 
-        mTable = (Table) getIntent().getSerializableExtra("table");
-
-        initData();
 
 
     }
@@ -100,6 +98,8 @@ public class ChangeTableActivity extends MvpActivity<IChangeTableView, ChangeTab
     @Override
     public void initData() {
 
+        mTable = (Table) getIntent().getSerializableExtra("table");
+
         listData();
 
         initSp();
@@ -127,10 +127,10 @@ public class ChangeTableActivity extends MvpActivity<IChangeTableView, ChangeTab
             }else {
 
                 if (table.getStatue().equals(getString(R.string.idle))) {
-                    Intent intent = new Intent(this, PreOrderActivity.class);
-                    intent.putExtra("type", "table");
-                    intent.putExtra("table", table);
-                    startActivityForResult(intent, 0x123);
+
+                    ChangeTableDialog changeTableDialog = new ChangeTableDialog(this,null);
+                    changeTableDialog.show();
+
                 } else {
                     OrderInfoDialog orderInfoDialog = new OrderInfoDialog(this, table.getOrderNumber());
                     orderInfoDialog.show();

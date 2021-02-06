@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,9 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
  * @Author Administrator
  * @Date 2021/2/3 13:20
  */
-public class SettingAdapter extends BaseExpandableRecyclerViewAdapter<SettingGroupBean, SettingChildBean,SettingAdapter.SettingGroupVH, SettingAdapter.SettingChildVH> {
+public class SettingAdapter extends BaseExpandableRecyclerViewAdapter<SettingGroupBean, SettingChildBean,SettingAdapter.SettingGroupVH, SettingAdapter.SettingChildVH>{
     private List<SettingGroupBean> data;
     private Context context;
+    private int clickItem = 0;
 
     public SettingAdapter(Context context,List<SettingGroupBean> data){
         this.context = context;
@@ -54,9 +56,12 @@ public class SettingAdapter extends BaseExpandableRecyclerViewAdapter<SettingGro
 
     @Override
     public void onBindGroupViewHolder(SettingGroupVH holder, SettingGroupBean groupBean, boolean isExpand) {
-
         holder.groupTitle.setText(groupBean.getTitle());
+    }
 
+    public void setClickItem(int clickItem){
+        this.clickItem = clickItem;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -71,8 +76,17 @@ public class SettingAdapter extends BaseExpandableRecyclerViewAdapter<SettingGro
 
     @Override
     public void onBindChildViewHolder(SettingChildVH settingChildVH, SettingGroupBean groupBean, SettingChildBean settingChildBean) {
+        settingChildVH.itemView.setTag(settingChildBean.getId());
         settingChildVH.childTitle.setText(settingChildBean.getName());
+
+        if (settingChildBean.getId() == clickItem){
+            settingChildVH.childTitle.setTextColor(context.getResources().getColor(R.color.text_yellow_00));
+        }else {
+            settingChildVH.childTitle.setTextColor(context.getResources().getColor(R.color.white));
+        }
+
     }
+
 
     class SettingGroupVH extends BaseExpandableRecyclerViewAdapter.BaseGroupViewHolder{
         public TextView groupTitle;

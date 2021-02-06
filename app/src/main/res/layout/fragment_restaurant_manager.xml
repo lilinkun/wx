@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        >
+
+        <TextView
+            android:id="@+id/tv_back"
+            style="@style/vip_btn_bg"
+            android:layout_alignParentRight="true"
+            android:text="@string/back"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:background="@drawable/bg_adapter_choose_num"
+            />
+
+
+    </RelativeLayout>
+
+
+        <com.android.wx.weight.CustomViewPager
+            android:id="@+id/vp_rest_manager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+</LinearLayout>
