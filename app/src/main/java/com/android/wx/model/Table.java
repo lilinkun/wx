@@ -31,12 +31,12 @@ public class Table implements Serializable{
     public static final long serialVersionUID = 12341;
     @Id(autoincrement = true)
     private Long tableid = null;
+    private double minPrice = 0;
 
-
-    @Generated(hash = 511871208)
+    @Generated(hash = 558630058)
     public Table(String name, String orderNumber, String persionNo, double amount1, double amount2, double amount3, String statue,
-            double totalAmountPrice, long time, String timeOld, String customerName, String floorName, String tableNum,
-            Long tableid) {
+            double totalAmountPrice, long time, String timeOld, String customerName, String floorName, String tableNum, Long tableid,
+            double minPrice) {
         this.name = name;
         this.orderNumber = orderNumber;
         this.persionNo = persionNo;
@@ -51,6 +51,7 @@ public class Table implements Serializable{
         this.floorName = floorName;
         this.tableNum = tableNum;
         this.tableid = tableid;
+        this.minPrice = minPrice;
     }
 
     @Generated(hash = 752389689)
@@ -154,5 +155,13 @@ public class Table implements Serializable{
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
     }
 }

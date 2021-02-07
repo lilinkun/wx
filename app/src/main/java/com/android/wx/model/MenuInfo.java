@@ -27,11 +27,12 @@ public class MenuInfo{
     private List<String> menuRemarks; //菜单备注
     private int menuFoodNum; //菜品数量
     private String orderId;
+    private String payer;
 
-    @Generated(hash = 67656289)
+    @Generated(hash = 1322188522)
     public MenuInfo(String menuType, String menuName, String menuIcon, double menuPrice,
             String menuId, boolean isChoose, List<String> menuRemarks, int menuFoodNum,
-            String orderId) {
+            String orderId, String payer) {
         this.menuType = menuType;
         this.menuName = menuName;
         this.menuIcon = menuIcon;
@@ -41,6 +42,7 @@ public class MenuInfo{
         this.menuRemarks = menuRemarks;
         this.menuFoodNum = menuFoodNum;
         this.orderId = orderId;
+        this.payer = payer;
     }
 
     @Generated(hash = 859137273)
@@ -125,5 +127,13 @@ public class MenuInfo{
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public String getPayer() {
+        return payer;
+    }
+
+    public void setPayer(String payer) {
+        this.payer = payer;
     }
 }

@@ -322,6 +322,7 @@
                 android:gravity="center">
 
                 <TextView
+                    android:id="@+id/tv_pre_order_divider_line"
                     android:text="@string/preorder_divide_line"
                     style="@style/txt_menu_order"
                     />

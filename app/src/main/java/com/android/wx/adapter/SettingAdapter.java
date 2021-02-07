@@ -100,12 +100,12 @@ public class SettingAdapter extends BaseExpandableRecyclerViewAdapter<SettingGro
 
         @Override
         protected void onExpandStatusChanged(RecyclerView.Adapter adapter, boolean isExpanding) {
+            adapter.notifyItemChanged(getAdapterPosition());
             if(isExpanding){
                 state.setImageResource(R.drawable.ic_arrow_top);
             }else{
                 state.setImageResource(R.drawable.ic_arrow_bottom);
             }
-            adapter.notifyItemChanged(getAdapterPosition());
         }
     }
 

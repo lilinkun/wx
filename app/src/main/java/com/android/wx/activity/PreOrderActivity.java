@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.wx.R;
+import com.android.wx.adapter.MenuGroupAdapter;
 import com.android.wx.adapter.MenuOrderAdapter;
 import com.android.wx.adapter.TabPageAdapter;
 import com.android.wx.base.MyApplication;
@@ -16,6 +17,7 @@ import com.android.wx.db.DBManager;
 import com.android.wx.event.EventCenter;
 import com.android.wx.fragment.MenuFragment;
 import com.android.wx.interf.IPreOrderListener;
+import com.android.wx.model.MenuGroupBean;
 import com.android.wx.model.MenuInfo;
 import com.android.wx.model.MenuTypeBean;
 import com.android.wx.model.OrderInfoBean;
@@ -28,6 +30,7 @@ import com.android.wx.view.PreOrderChooseNumDialog;
 import com.android.wx.view.PreOrderNumberDialog;
 import com.android.wx.weight.SpaceItemDecoration;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.hgdendi.expandablerecycleradapter.BaseExpandableRecyclerViewAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +45,7 @@ import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresenter> implements IPreOrderListener, PreOrderNumberDialog.OnPreOrderListener, MenuOrderAdapter.OnMenuOrderListener, PreOrderChooseNumDialog.OnOreOrderChooseNumListener {
+public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresenter> implements IPreOrderListener, PreOrderNumberDialog.OnPreOrderListener, MenuGroupAdapter.OnMenuOrderListener, PreOrderChooseNumDialog.OnOreOrderChooseNumListener, BaseExpandableRecyclerViewAdapter.ExpandableRecyclerViewOnClickListener<MenuGroupBean, MenuInfo> {
 
     @BindView(R.id.order_list_tablayou)
     SlidingTabLayout orderListTablayou;
@@ -84,11 +87,16 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     private MenuFragment menuFragment;
     private MenuOrderAdapter menuOrderAdapter;
     private List<MenuInfo> menuInfos;
+    private List<MenuInfo> allMenuInfos;
     private PreOrderNumberDialog preOrderNumberDialog;
     private MenuInfo clickFoodMenu;
     private Table table;
     private String type;
     private int num;
+    private String payer;
+    private ArrayList<String> payers = new ArrayList<>();
+    private List<MenuGroupBean> menuGroupBeans;
+    private MenuGroupAdapter menuGroupAdapter;
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd yyyy");
     SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("HH:mm");
@@ -180,18 +188,34 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
     public void onPreOrderClick(MenuInfo menuInfo) {
 
 
-        if (menuOrderAdapter == null) {
+        if (menuGroupAdapter == null) {
+            payer = "座位1";
+            payers.add(payer);
+            menuInfo.setPayer(payer);
+            menuGroupBeans = new ArrayList<>();
             menuInfos = new ArrayList<>();
+            allMenuInfos = new ArrayList<>();
             menuInfos.add(menuInfo);
-            menuOrderAdapter = new MenuOrderAdapter(this,menuInfos,true);
-            menuOrderAdapter.setListener(this);
-            rvMenuList.setAdapter(menuOrderAdapter);
+            allMenuInfos.add(menuInfo);
+            MenuGroupBean menuGroupBean = new MenuGroupBean(payer,menuInfos);
+            menuGroupBeans.add(menuGroupBean);
+
+            menuGroupAdapter = new MenuGroupAdapter(this,menuGroupBeans);
+            menuGroupAdapter.setListener(this);
+            menuGroupAdapter.setGroupListener(this);
+            rvMenuList.setAdapter(menuGroupAdapter);
 
             tvNoFood.setVisibility(View.GONE);
             llPreorderBottom.setVisibility(View.VISIBLE);
             tvChangeStartOrder.setVisibility(View.GONE);
         }else {
-
+            menuInfos.clear();
+            for (int i = 0;i<allMenuInfos.size();i++){
+                if (allMenuInfos.get(i).getPayer().equals(payer)){
+                    menuInfos.add(allMenuInfos.get(i));
+                }
+            }
+            menuInfo.setPayer(payer);
             if(menuInfos.contains(menuInfo)){
                 if (clickFoodMenu != null) {
                     if (clickFoodMenu == menuInfo) {
@@ -203,10 +227,26 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
             }else {
                 menuInfos.add(menuInfo);
             }
-            menuOrderAdapter.setData(menuInfos);
+            menuGroupBeans.clear();
+            for (int i = 0;i<payers.size();i++){
+                if (payers.get(i).equals(payer)){
+                    MenuGroupBean menuGroupBean = new MenuGroupBean(payer,menuInfos);
+                    menuGroupBeans.add(menuGroupBean);
+                }else {
+                    ArrayList<MenuInfo> infos = new ArrayList<>();
+                    for (MenuInfo menuInfo1 : allMenuInfos){
+                        if (menuInfo1.getPayer().equals(payers.get(i))){
+                            infos.add(menuInfo1);
+                        }
+                    }
+                    MenuGroupBean menuGroupBean = new MenuGroupBean(payers.get(i),infos);
+                    menuGroupBeans.add(menuGroupBean);
+                }
+            }
+//            menuGroupAdapter.setData(menuInfos);
+            menuGroupAdapter.setData(menuGroupBeans);
 
-
-            if (menuInfos.size() > 0){
+            if (allMenuInfos.size() > 0){
                 tvNoFood.setVisibility(View.GONE);
                 tvChangeStartOrder.setVisibility(View.GONE);
                 llPreorderBottom.setVisibility(View.VISIBLE);
@@ -226,26 +266,31 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
         tvPreOrderCustomerNum.setText(num + getString(R.string.person));
     }
 
-    @Override
-    public void onItemClick(int position) {
-        clickFoodMenu = menuInfos.get(position);
-        menuOrderAdapter.setClickItem(menuInfos.get(position));
-        settle();
-    }
 
     @Override
-    public void onRemarksListener(int position, String remarks) {
-        List<String> strings = menuInfos.get(position).getMenuRemarks();
+    public void onRemarksListener(MenuGroupBean menuGroupBean,MenuInfo menuInfo, String remarks) {
+        MenuInfo menuInfo1 = menuInfo;
+        List<String> strings = menuInfo.getMenuRemarks();
         if (strings == null){
             strings = new ArrayList<>();
         }
         strings.add(remarks);
-        menuInfos.get(position).setMenuRemarks(strings);
+        menuInfo.setMenuRemarks(strings);
         settle();
+
+        for (int i = 0;i<menuGroupBeans.size();i++){
+            if (menuGroupBeans.get(i) == menuGroupBean){
+                for (int j = 0; j < menuGroupBeans.get(i).getMenuInfos().size();j++){
+                    if (menuInfo1 == menuGroupBeans.get(i).getMenuInfos().get(j)){
+                        menuGroupBeans.get(i).getMenuInfos().get(j).setMenuRemarks(strings);
+                    }
+                }
+            }
+        }
     }
 
     @OnClick({R.id.tv_pre_order_plus,R.id.tv_pre_order_reduce,R.id.tv_pre_order_num,R.id.tv_pre_order_change_price,R.id.tv_preorder_exit,R.id.tv_preorder_delete,R.id.tv_preorder_go_kitchen,R.id.tv_preorder_save
-            ,R.id.tv_customer_num,R.id.tv_pre_order_report,R.id.tv_change_table})
+            ,R.id.tv_customer_num,R.id.tv_pre_order_report,R.id.tv_change_table,R.id.tv_pre_order_divider_line})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_pre_order_plus:
@@ -386,6 +431,21 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
                 startActivity(intent1);
 
                 break;
+
+            case R.id.tv_pre_order_divider_line:
+
+                if (menuFragment != null){
+                    menuFragment.onAllRemoveFood();
+                }
+
+                payer = "座位" + (payers.size()+1);
+                payers.add(payer);
+
+                MenuGroupBean menuGroupBean = new MenuGroupBean(payer,null);
+
+                menuGroupBeans.add(menuGroupBean);
+
+                break;
         }
     }
 
@@ -418,6 +478,29 @@ public class PreOrderActivity extends MvpActivity<IPreOrderView, PreOrderPresent
                 menuOrderAdapter.setData(menuInfos);
             }
         }
+        settle();
+    }
+
+    @Override
+    public boolean onGroupLongClicked(MenuGroupBean groupItem) {
+        return false;
+    }
+
+    @Override
+    public boolean onInterceptGroupExpandEvent(MenuGroupBean groupItem, boolean isExpand) {
+        return false;
+    }
+
+    @Override
+    public void onGroupClicked(MenuGroupBean groupItem) {
+        groupItem.isExpandable();
+    }
+
+    @Override
+    public void onChildClicked(MenuGroupBean groupItem, MenuInfo childItem) {
+
+        clickFoodMenu = childItem;
+        menuGroupAdapter.setClickItem(childItem);
         settle();
     }
 }
