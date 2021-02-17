@@ -8,10 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.wx.R;
-import com.android.wx.model.MenuGroupBean;
 import com.android.wx.model.MenuInfo;
 import com.android.wx.view.PreOrderRemarksDialog;
-import com.hgdendi.expandablerecycleradapter.BaseExpandableRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,26 +19,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * @ClassName MenuGroupAdapter
+ * @ClassName MenuOrderAdapter1
  * @Description TODO
  * @Author Administrator
- * @Date 2021/2/7 22:13
+ * @Date 2021/2/8 20:33
  */
-public class MenuGroupAdapter extends BaseExpandableRecyclerViewAdapter<MenuGroupBean, MenuInfo, MenuGroupAdapter.MenuGroupVH, MenuGroupAdapter.MenuChildVH> {
+public class MenuOrderAdapter1 extends RecyclerView.Adapter<MenuOrderAdapter1.ViewHolder> implements View.OnClickListener {
 
-    Context context;
-    List<MenuGroupBean> menuGroupBeans;
-    private OnMenuOrderListener onMenuOrderListener;
+    private Context context;
+    private List<MenuInfo> menuInfos;
+    private MenuOrderAdapter.OnMenuOrderListener onMenuOrderListener;
     private MenuInfo clickMenuInfo;
+    private boolean isShowIv;
+    private int clickInt;
 
-    public MenuGroupAdapter(Context context, List<MenuGroupBean> menuGroupBeans){
+    public MenuOrderAdapter1(Context context , List<MenuInfo> menuInfos,boolean isShowIv){
         this.context = context;
-        this.menuGroupBeans = menuGroupBeans;
+        this.menuInfos = menuInfos;
+        this.isShowIv = isShowIv;
     }
 
-    @Override
-    public int getGroupCount() {
-        return menuGroupBeans.size();
+    public void setData(List<MenuInfo> menuInfos){
+        this.menuInfos = menuInfos;
+        notifyDataSetChanged();
     }
 
     public void setClickItem(MenuInfo clickItem){
@@ -48,69 +49,46 @@ public class MenuGroupAdapter extends BaseExpandableRecyclerViewAdapter<MenuGrou
         notifyDataSetChanged();
     }
 
-    public void setData(List<MenuGroupBean> menuGroupBeans){
-        this.menuGroupBeans = menuGroupBeans;
-        notifyDataSetChanged();
-    }
-
+    @NonNull
     @Override
-    public MenuGroupBean getGroupItem(int groupIndex) {
-
-        return menuGroupBeans.get(groupIndex);
-    }
-
-    @Override
-    public MenuGroupVH onCreateGroupViewHolder(ViewGroup parent, int groupViewType) {
-
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_menu_group_item,parent,false);
-
-        MenuGroupVH menuGroupVH = new MenuGroupVH(view);
-
-        return menuGroupVH;
-    }
-
-    @Override
-    public void onBindGroupViewHolder(MenuGroupVH holder, MenuGroupBean groupBean, boolean isExpand) {
-
-        if (menuGroupBeans.size() > 1){
-            holder.itemView.setVisibility(View.VISIBLE);
-        }else {
-            holder.itemView.setVisibility(View.GONE);
-        }
-        isExpand = true;
-
-        holder.priceName.setText(groupBean.getPriceName());
-    }
-
-    @Override
-    public MenuChildVH onCreateChildViewHolder(ViewGroup parent, int childViewType) {
-
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.adapter_menu_order,parent,false);
 
-        MenuChildVH childVH = new MenuChildVH(v);
+        ViewHolder viewHolder = new ViewHolder(v);
 
-        return childVH;
+        v.setOnClickListener(this);
+
+        return viewHolder;
     }
 
     @Override
-    public void onBindChildViewHolder(MenuChildVH holder, MenuGroupBean groupBean, MenuInfo menuInfo) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.tvFoodName.setText(menuInfo.getMenuName());
-        holder.tvFoodPrice.setText("$" + menuInfo.getMenuPrice());
-        holder.tvMenuFoodNum.setText("x " + menuInfo.getMenuFoodNum());
-        if (clickMenuInfo == menuInfo){
+        holder.itemView.setTag(position);
+
+        holder.tvFoodName.setText(menuInfos.get(position).getMenuName());
+        holder.tvFoodPrice.setText("$" + menuInfos.get(position).getMenuPrice());
+        holder.tvMenuFoodNum.setText("x " + menuInfos.get(position).getMenuFoodNum());
+        if (clickMenuInfo == menuInfos.get(position)){
             holder.itemView.setBackgroundResource(R.drawable.bg_menu_order_adapter_item_click);
         }else {
             holder.itemView.setBackgroundResource(R.drawable.bg_menu_order_adapter_item);
         }
 
-        if(menuInfo.getMenuRemarks() == null){
+        if(menuInfos.get(position).getMenuRemarks() == null){
             holder.rvPreorderRemarks.setVisibility(View.GONE);
         }else {
             holder.rvPreorderRemarks.setVisibility(View.VISIBLE);
         }
 
         List<String> strings = new ArrayList<>();
+
+        if (!isShowIv){
+            holder.ivMenuRemarks.setVisibility(View.GONE);
+            initAdapter(holder.rvPreorderRemarks,menuInfos.get(position).getMenuRemarks());
+        }else {
+            holder.ivMenuRemarks.setVisibility(View.VISIBLE);
+        }
 
         holder.ivMenuRemarks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +99,7 @@ public class MenuGroupAdapter extends BaseExpandableRecyclerViewAdapter<MenuGrou
                     public void onRemarkStr(String remarks) {
 
                         holder.rvPreorderRemarks.setVisibility(View.VISIBLE);
-                        onMenuOrderListener.onRemarksListener(groupBean,menuInfo,remarks);
+                        onMenuOrderListener.onRemarksListener(position,remarks);
 
                         strings.add(remarks);
 
@@ -147,39 +125,40 @@ public class MenuGroupAdapter extends BaseExpandableRecyclerViewAdapter<MenuGrou
         recyclerView.setAdapter(remarksAdapter);
     }
 
-    class MenuGroupVH extends BaseExpandableRecyclerViewAdapter.BaseGroupViewHolder{
+    @Override
+    public int getItemCount() {
+        return menuInfos.size();
+    }
 
-        private TextView priceName;
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
 
-        public MenuGroupVH(View itemView) {
-            super(itemView);
-            priceName = itemView.findViewById(R.id.tv_price_name);
-        }
-
-        @Override
-        protected void onExpandStatusChanged(RecyclerView.Adapter adapter, boolean b) {
-
-           adapter.notifyItemChanged(getAdapterPosition());
-
+    @Override
+    public void onClick(View view) {
+        if (onMenuOrderListener != null){
+            onMenuOrderListener.onItemClick((Integer) view.getTag());
         }
     }
 
-    public void setGroupListener(OnMenuOrderListener listener){
+    public void setListener(MenuOrderAdapter.OnMenuOrderListener listener){
         onMenuOrderListener = listener;
     }
 
     public interface OnMenuOrderListener{
-        public void onRemarksListener(MenuGroupBean menuGroupBean,MenuInfo menuInfo,String remarks);
+        public void onItemClick(int position);
+        public void onRemarksListener(int position,String remarks);
     }
 
-    class MenuChildVH extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvFoodName;
         TextView tvFoodPrice;
         ImageView ivMenuRemarks;
         RecyclerView rvPreorderRemarks;
         TextView tvMenuFoodNum;
 
-        public MenuChildVH(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFoodName = itemView.findViewById(R.id.tv_menu_food_name);
             tvFoodPrice = itemView.findViewById(R.id.tv_menu_food_price);
@@ -188,6 +167,4 @@ public class MenuGroupAdapter extends BaseExpandableRecyclerViewAdapter<MenuGrou
             tvMenuFoodNum = itemView.findViewById(R.id.tv_menu_food_num);
         }
     }
-
-
 }

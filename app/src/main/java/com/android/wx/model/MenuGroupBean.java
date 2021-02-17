@@ -10,7 +10,7 @@ import java.util.List;
  * @Author Administrator
  * @Date 2021/2/7 22:14
  */
-public class MenuGroupBean implements BaseExpandableRecyclerViewAdapter.BaseGroupBean<MenuInfo> {
+public class MenuGroupBean  {
     private String priceName;
     private List<MenuInfo> menuInfos;
 
@@ -27,23 +27,12 @@ public class MenuGroupBean implements BaseExpandableRecyclerViewAdapter.BaseGrou
         this.priceName = priceName;
     }
 
-
-    @Override
-    public int getChildCount() {
-        return menuInfos.size();
-    }
-
-    @Override
-    public MenuInfo getChildAt(int childIndex) {
-        return menuInfos.get(childIndex);
+    public void setMenuInfos(List<MenuInfo> menuInfos) {
+        this.menuInfos = menuInfos;
     }
 
     public List<MenuInfo> getMenuInfos() {
         return menuInfos;
     }
 
-    @Override
-    public boolean isExpandable() {
-        return true;
-    }
 }

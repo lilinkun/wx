@@ -12,4 +12,10 @@
         android:textColor="@color/title_color"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_food_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
 </LinearLayout>
